@@ -18,7 +18,11 @@ cc.Class({
     onLoad: function () {
 
     },
-    
+
+    startControlCallback: function(){
+        this.getComponent('Game').startGame();
+    },
+
     buttonControlCallback: function(){
         cc.director.loadScene('game');
     },
@@ -28,9 +32,9 @@ cc.Class({
             cc.director.pause();
 
         }else{
-            cc.director.resume(); 
+            cc.director.resume();
         }
-        
+
     },
 
 

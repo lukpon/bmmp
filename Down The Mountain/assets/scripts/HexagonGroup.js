@@ -16,6 +16,9 @@ cc.Class({
             default: null,
             type: cc.Node,
         },
+        spawnSlides: {
+            default:true,
+        },
 
     },
 
@@ -46,8 +49,10 @@ cc.Class({
         this.hexagonHeight = 64;
         this.minRow = 0;
 
+        this.currentDepth = 0;
+
         this.node.removeChild(this.player);
-         //initialize hexagons
+        //initialize hexagons
         this.hexGroup = new cc.Node();
         this.hexGroup.setAnchorPoint(cc.p(0,1))
         this.hexGroup.setPosition(cc.p(0,0));
@@ -58,7 +63,7 @@ cc.Class({
         this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
 
         for(var i = 0; i < this.gridSizeY; i ++){
-               this.addHexagonRow(i);
+            this.addHexagonRow(i);
         }
         this.hexGroup.addChild(this.player);
         // initialize player
@@ -94,8 +99,6 @@ cc.Class({
 
     addHexagonRow: function(i){
 
-        //console.log("I "+i);
-
         this.hexagonArray[i] = [];
 
         var columnLength = this.gridSizeX;
@@ -104,12 +107,10 @@ cc.Class({
             columnLength -=  1;
         }
 
-     	for(var j = 0; j < columnLength; j ++){
+        for(var j = 0; j < columnLength; j ++){
 
             var hexagonX = this.hexagonWidth * j + (this.hexagonWidth / 2) * (i % 2);
             var hexagonY = this.hexagonHeight * i / 4 * 3;
-
-            console.log("Level Base: "+this.level_base[i][j]);
 
             var newHexagon = cc.instantiate(this.hexagon);
             newHexagon.getComponent('Hexagon').group = this;
@@ -119,10 +120,11 @@ cc.Class({
             newHexagon.getComponent('Hexagon').setOverlay(this.getFrameFromId(this.level_overlay[i][j]));
 
             newHexagon.setPosition(cc.p(hexagonX,hexagonY));
-     		this.hexagonArray[i][j] = newHexagon;
-     		this.hexGroup.addChild(newHexagon);
-
-     	}
+            newHexagon.setLocalZOrder(this.currentDepth);
+            this.currentDepth -= 1;
+            this.hexagonArray[i][j] = newHexagon;
+            this.hexGroup.addChild(newHexagon);
+        }
 
     },
 
@@ -155,13 +157,13 @@ cc.Class({
                 else{
                     var r = Math.random();
                     columns_ground[j] = 1
-                    // if(r <= 0.2){
-                    //     columns_ground[j] = 2;
-                    // }else if(r > 0.2 && r <0.9){
-                    //     columns_ground[j] = 1;
-                    // }else{
-                    //     columns_ground[j] = 9;
-                    // }
+                    if(r <= 0.2){
+                        columns_ground[j] = 2;
+                    }else if(r > 0.2 && r <0.9){
+                        columns_ground[j] = 1;
+                    }else{
+                        columns_ground[j] = 9;
+                    }
                 }
 
             }
@@ -170,7 +172,7 @@ cc.Class({
         }
 
         //initialize overlays, some trees
-        var maxTreesPerRow = 0; //2
+        var maxTreesPerRow = 2; //2
 
         for(var k = 0; k<rows; k++){
 
@@ -186,69 +188,69 @@ cc.Class({
 
                 columns_overlay[l] = 0;
                 var rand = Math.random();
-                // if(rand < 0.4){
-                //     if(k > 0 && rows_ground[k][l] == 1 && treesPerRow < maxTreesPerRow){
-                //         if(l > 0 && l < columnLength){
-                //             if(columns_overlay[l-1] != 4){
-                //                 columns_overlay[l] = 4;
-                //                 treesPerRow++;
-                //             }
-                //         } else{
-                //             columns_overlay[l] = 4;
-                //             treesPerRow++;
-                //         }
-                //
-                //     }
-                // }
-                // //stars
-                // else if(rand >= 0.4 && rand < 0.85){
-                //     if(k > 0 && (rows_ground[k][l] == 1 || rows_ground[k][l] == 2)){
-                //         if(Math.random()<0.4){
-                //             columns_overlay[l] = 5;
-                //         }
-                //     }
-                // }else{
-                //
-                //     if(k > 0 && rows_ground[k][l] != 0){
-                //         //flipped, trap, sticky...
-                //         var rand2 = Math.random();
-                //         if(rand2 <= 0.2){
-                //             columns_overlay[l] = 6;
-                //         }else if(rand2 > 0.4 && rand2 <= 0.65){
-                //             columns_overlay[l] = 7;
-                //         }else if(rand2 > 0.85){
-                //             columns_overlay[l] = 8;
-                //         }
-                //     }
-                // }
+                if(rand < 0.4){
+                    if(k > 0 && rows_ground[k][l] == 1 && treesPerRow < maxTreesPerRow){
+                        if(l > 0 && l < columnLength){
+                            if(columns_overlay[l-1] != 4){
+                                columns_overlay[l] = 4;
+                                treesPerRow++;
+                            }
+                        } else{
+                            columns_overlay[l] = 4;
+                            treesPerRow++;
+                        }
+
+                    }
+                }
+                //stars
+                else if(rand >= 0.4 && rand < 0.85){
+                    if(k > 0 && (rows_ground[k][l] == 1 || rows_ground[k][l] == 2)){
+                        if(Math.random()<0.4){
+                            columns_overlay[l] = 5;
+                        }
+                    }
+                }else{
+
+                    if(k > 0 && rows_ground[k][l] != 0){
+                        //flipped, trap, sticky...
+                        var rand2 = Math.random();
+                        if(rand2 <= 0.2){
+                            columns_overlay[l] = 6;
+                        }else if(rand2 > 0.4 && rand2 <= 0.65){
+                            columns_overlay[l] = 7;
+                        }else if(rand2 > 0.85){
+                            columns_overlay[l] = 8;
+                        }
+                    }
+                }
 
             }
             rows_overlay[k] = columns_overlay;
             columns_overlay = [];
         }
 
-        //Water slides
+        if (this.spawnSlides) {
+            //Water slides
 
-        var length1 = this.getRandomArbitrary(2,7);
+            var length1 = this.getRandomArbitrary(2,7);
 
-        var offsetX1 = this.getRandomArbitrary(1,3);
-        var offsetY1 = this.getRandomArbitrary(1,13);
+            var offsetX1 = this.getRandomArbitrary(1,3);
+            var offsetY1 = this.getRandomArbitrary(1,13);
 
-
-        // for(var u = 0; u<length1;u++){
-        //     if(u==0){
-        //         rows_ground[offsetY1+u][offsetX1] = 1;
-        //         rows_overlay[offsetY1+u][offsetX1] = 3;
-        //     }
-        //     else if((offsetY1+u)%2 == 0){
-        //         rows_ground[offsetY1+u][offsetX1] = 1;
-        //         rows_overlay[offsetY1+u][offsetX1] = 32;
-        //     }else{
-        //         rows_ground[offsetY1+u][offsetX1] = 1;
-        //         rows_overlay[offsetY1+u][offsetX1] = 31;
-        //     }
-        //
-        // }
+            for(var u = 0; u<length1;u++){
+                if(u==0){
+                    rows_ground[offsetY1+u][offsetX1] = 1;
+                    rows_overlay[offsetY1+u][offsetX1] = 3;
+                }
+                else if((offsetY1+u)%2 == 0){
+                    rows_ground[offsetY1+u][offsetX1] = 1;
+                    rows_overlay[offsetY1+u][offsetX1] = 32;
+                }else{
+                    rows_ground[offsetY1+u][offsetX1] = 1;
+                    rows_overlay[offsetY1+u][offsetX1] = 31;
+                }
+            }
+        }
 
 
 
@@ -269,44 +271,44 @@ cc.Class({
         switch(id){
 
             case 1:
-                result = "isocube";
-                break;
+            result = "isocube";
+            break;
             case 2:
-                result = "othercube";
-                break;
+            result = "othercube";
+            break;
             case 3:
-                result = "waterplane";
-                break;
+            result = "waterplane";
+            break;
             case 31:
-                result = "waterplane_l";
-                break;
+            result = "waterplane_l";
+            break;
             case 32:
-                result = "waterplane_r";
-                break;
+            result = "waterplane_r";
+            break;
             case 4:
-                if(Math.random()>0.5){
-                    result = "tree2";
-                }else{
-                    result = "tree";
-                }
-                break;
+            if(Math.random()>0.5){
+                result = "tree2";
+            }else{
+                result = "tree";
+            }
+            break;
             case 5:
-                result = "star";
-                break;
+            result = "star";
+            break;
             case 6:
-                result= "flip";
-                break;
+            result= "flip";
+            break;
             case 7:
-                result= "sticky";
-                break;
+            result= "sticky";
+            break;
             case 8:
-                result= "trap";
-                break;
+            result= "trap";
+            break;
             case 9:
-                result= "zacken";
-                break;
+            result= "zacken";
+            break;
             default:
-                result = "none";
+            result = "none";
         }
         return result;
 
@@ -332,44 +334,44 @@ cc.Class({
                 switch(keyCode) {
                     case cc.KEY.a:
 
-                        self.leftUp = true;
-                        self.rightUp = false;
-                        if(!self.playerHasMoved){
-                           self.playerHasMoved = true;
-                        }if(self.game.flipped){
-                            self.leftUp = false;
-                            self.rightUp = true;
-                        }
-                        break;
-                    case cc.KEY.d:
-
+                    self.leftUp = true;
+                    self.rightUp = false;
+                    if(!self.playerHasMoved){
+                        self.playerHasMoved = true;
+                    }if(self.game.flipped){
                         self.leftUp = false;
                         self.rightUp = true;
-                        if(!self.playerHasMoved){
-                           self.playerHasMoved = true;
-                        }
-                        if(self.game.flipped){
-                            self.leftUp = true;
-                            self.rightUp = false;
-                        }
-                        break;
+                    }
+                    break;
+                    case cc.KEY.d:
+
+                    self.leftUp = false;
+                    self.rightUp = true;
+                    if(!self.playerHasMoved){
+                        self.playerHasMoved = true;
+                    }
+                    if(self.game.flipped){
+                        self.leftUp = true;
+                        self.rightUp = false;
+                    }
+                    break;
                 }
             },
 
             onKeyReleased: function(keyCode, event) {
                 switch(keyCode) {
                     case cc.KEY.a:
-                        self.leftUp = false;
-                        if(self.game.flipped){
-                            self.rightUp = false;
-                        }
-                        break;
-                    case cc.KEY.d:
+                    self.leftUp = false;
+                    if(self.game.flipped){
                         self.rightUp = false;
-                        if(self.game.flipped){
-                            self.leftUp = false;
-                        }
-                        break;
+                    }
+                    break;
+                    case cc.KEY.d:
+                    self.rightUp = false;
+                    if(self.game.flipped){
+                        self.leftUp = false;
+                    }
+                    break;
                 }
             }
         }, self.node);
@@ -403,18 +405,18 @@ cc.Class({
         this.playerCol = posX;
         this.playerRow = posY;
 
-	    var nextX = (this.hexagonWidth * (2 * posX + 1 + posY % 2) / 2)  - this.hexagonWidth/2;
-		  var nextY = this.hexagonHeight * (3 * posY + 1) / 4  + 64/4; // + (80-57)/2;
+        var nextX = (this.hexagonWidth * (2 * posX + 1 + posY % 2) / 2)  - this.hexagonWidth/2;
+        var nextY = this.hexagonHeight * (3 * posY + 1) / 4  + 64/4; // + (80-57)/2;
 
         this.player.getComponent('Player').move(nextX, nextY, left);
 
-	},
+    },
 
-	moveFinished: function(){
+    moveFinished: function(){
         this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').checkAction();
-	    this.playerMove = true;
+        this.playerMove = true;
 
-	    if(this.gridSizeY - this.playerRow < 8){
+        if(this.gridSizeY - this.playerRow < 8){
             this.addHexagonRow(this.gridSizeY);
             this.gridSizeY ++;
         }
@@ -424,7 +426,7 @@ cc.Class({
         }
 
         this.checkNextSteps();
-	},
+    },
 
     checkPlayerStatus: function(row,col,event,spikeOut){
 
@@ -432,23 +434,23 @@ cc.Class({
         switch(event){
 
             case 'explosion':
-                if(this.playerRow == row && this.playerCol == col){
-                    //cc.log('Game Over');
-                    this.game.gameOver();
-                }
-                break;
+            if(this.playerRow == row && this.playerCol == col){
+                //cc.log('Game Over');
+                this.game.gameOver();
+            }
+            break;
             case 'trap':
-                if(this.playerRow == row && this.playerCol == col){
+            if(this.playerRow == row && this.playerCol == col){
+                this.game.gameOver();
+            }
+            break;
+            case 'spike':
+            if(this.playerRow == row && this.playerCol == col){
+                if(spikeOut){
                     this.game.gameOver();
                 }
-                break;
-            case 'spike':
-                if(this.playerRow == row && this.playerCol == col){
-                    if(spikeOut){
-                        this.game.gameOver();
-                    }
-                }
-                break;
+            }
+            break;
         }
     },
 
@@ -513,53 +515,57 @@ cc.Class({
             }
 
             if(!this.playerSlide){
-              //console.log(this.playerCol);
+                var columnLength = this.gridSizeX;
+                if(this.playerRow % 2 == 0 ){
+                    columnLength -=  1;
+                }
                 if(this.leftUp && (this.playerCol > 0 || (this.playerRow % 2 == 1))){
-
                     if(this.canStepLeft){
                         this.placeMarker(this.playerCol - (1 - this.playerRow % 2), this.playerRow + 1, true);
                     }
-			}
-    			if(this.rightUp && this.playerCol < this.gridSizeX - 1){
-
-    		        if(this.canStepRight){
-    			        this.placeMarker(this.playerCol + (this.playerRow % 2), this.playerRow + 1, false);
-    		        }
-
-    			}
+                } else if (this.leftUp && (this.playerCol == 0 || (this.playerRow % 2 == 1))) {
+                    this.game.gameOver();
+                }
+                if(this.rightUp && this.playerCol < this.gridSizeX - 1){
+                    if(this.canStepRight){
+                        this.placeMarker(this.playerCol + (this.playerRow % 2), this.playerRow + 1, false);
+                    }
+                } else if (this.rightUp && this.playerCol == columnLength) {
+                    this.game.gameOver();
+                }
             }
         }
 
-        var elapsed = 12 * dt;
+        var elapsed = 64 * dt;
 
         if(this.playerHasMoved){
-            this.hexGroup.y += elapsed;
+            this.hexGroup.y -= elapsed;
         }
 
-        if(this.hexGroup.convertToWorldSpace(this.player.getPosition()).y < 448){
-            this.hexGroup.y -= (64 * dt);
+        if(this.hexGroup.convertToWorldSpace(this.player.getPosition()).y > 250){
+            this.hexGroup.y -= (96 * dt);
         }
 
         if(this.hexGroup.convertToWorldSpace(this.player.getPosition()).y < 100){
-                this.game.gameOver();
+            this.game.gameOver();
         }
 
         if(this.hexGroup.convertToWorldSpace(this.player.getPosition()).y < (480 - 240)){
-                //To-Do
+            //To-Do
         }
 
         var destroyedRow = false;
 
         for(var i = this.minRow; i < this.gridSizeY; i ++){
 
-		    for(var j = 0; j < this.gridSizeX; j ++){
-				if((i % 2 === 0 || j < this.gridSizeX - 1) && this.hexGroup.convertToWorldSpace(this.hexagonArray[i][j].getPosition()).y  < 100){
+            for(var j = 0; j < this.gridSizeX; j ++){
+                if((i % 2 === 0 || j < this.gridSizeX - 1) && this.hexGroup.convertToWorldSpace(this.hexagonArray[i][j].getPosition()).y  < 100){
 
                     this.hexagonArray[i][j].runAction(cc.sequence(cc.fadeOut(0.5),cc.callFunc(this.onFadedOut.bind(this.hexagonArray[i][j]), this)));
                     destroyedRow = true;
-				}
-			}
-		}
+                }
+            }
+        }
 
         if(destroyedRow){
             this.minRow ++;
@@ -574,14 +580,14 @@ cc.Class({
 
     traceNextPos: function(overlay){
 
-	    var level = !overlay?this.level_base:this.level_overlay;
+        var level = !overlay?this.level_base:this.level_overlay;
 
-	    if((this.playerRow % 2 == 1)){
+        if((this.playerRow % 2 == 1)){
             console.log("Next left:" + level[(this.playerRow+1) % 9][this.playerCol]);
             console.log("Next right:" + level[(this.playerRow+1) % 9][this.playerCol+1]);
         }else{
             console.log("Next left:" + level[(this.playerRow+1) % 9][this.playerCol-1]);
             console.log("Next right:" + level[(this.playerRow+1) % 9][this.playerCol]);
         }
-	},
+    },
 });

@@ -16,21 +16,21 @@ cc.Class({
             default:null,
             type: cc.SpriteAtlas
         },
-
+        gameplayWindow: {
+            default:null,
+            type: cc.Node
+        },
         gameOverMenu: {
             default:null,
             type: cc.Node
         },
-
-        
-
     },
 
 
 
     // use this for initialization
     onLoad: function () {
-        
+
         this.GameState = cc.Enum({
             Menu: -1,
             Run : -1,
@@ -42,14 +42,14 @@ cc.Class({
         this.reset();
     },
 
-    startGame:function(){
-        this.gameState = this.GameState.Run;
-    },
+    // startGame:function(){
+    //     this.gameState = this.GameState.Run;
+    // },
 
     reset:function(){
         this.score = 0;
         this.sticky = false;
-        this.flipped = false; 
+        this.flipped = false;
         this.gameOverMenu.active = false;
         this.startGame();
     },
@@ -74,13 +74,18 @@ cc.Class({
     },
     toggleStickiness: function(){
         this.sticky = !this.sticky;
-    },      
-    
+    },
+
+    startGame:function () {
+        this.gameState = this.GameState.Run;
+        this.gameplayWindow.active = true;
+    },
+
     gameOver:function () {
         this.gameState = this.GameState.Over;
         this.gameOverMenu.active = true;
         this.gameOverMenu.getComponent('GameOver').showScore(this.score);
-        this.hexagonGroup.getComponent('HexagonGroup').stop();    
+        this.hexagonGroup.getComponent('HexagonGroup').stop();
     },
 
     // called every frame, uncomment this function to activate update callback
