@@ -532,7 +532,7 @@
     },
     "_enabled": true,
     "gridSizeX": 5,
-    "gridSizeY": 17,
+    "gridSizeY": 8,
     "hexagon": {
       "__uuid__": "4ac40b96-cc62-4f07-a3a9-330007a567de"
     },

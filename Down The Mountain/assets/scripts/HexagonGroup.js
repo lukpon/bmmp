@@ -53,7 +53,7 @@ cc.Class({
         this.hexGroup.setPosition(cc.p(0,0));
         this.node.addChild(this.hexGroup);
         this.hexGroup.x += this.hexagonWidth/2 + (480 - this.gridSizeX*this.hexagonWidth)/2 ;
-        this.hexGroup.y -= this.hexagonHeight - 20 ;
+        this.hexGroup.y -= this.hexagonHeight + 320 ;
 
         this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
 
@@ -72,8 +72,8 @@ cc.Class({
         this.player.setLocalZOrder(1000);
 
         // initialize input
-        this.leftDown = false;
-        this.rightDown = false;
+        this.leftUp = false;
+        this.rightUp = false;
         this.canStepLeft = false;
         this.canStepRight = false;
 
@@ -94,6 +94,8 @@ cc.Class({
 
     addHexagonRow: function(i){
 
+        //console.log("I "+i);
+
         this.hexagonArray[i] = [];
 
         var columnLength = this.gridSizeX;
@@ -105,7 +107,9 @@ cc.Class({
      	for(var j = 0; j < columnLength; j ++){
 
             var hexagonX = this.hexagonWidth * j + (this.hexagonWidth / 2) * (i % 2);
-            var hexagonY = this.hexagonHeight * -i / 4 * 3;
+            var hexagonY = this.hexagonHeight * i / 4 * 3;
+
+            console.log("Level Base: "+this.level_base[i][j]);
 
             var newHexagon = cc.instantiate(this.hexagon);
             newHexagon.getComponent('Hexagon').group = this;
@@ -328,25 +332,25 @@ cc.Class({
                 switch(keyCode) {
                     case cc.KEY.a:
 
-                        self.leftDown = true;
-                        self.rightDown = false;
+                        self.leftUp = true;
+                        self.rightUp = false;
                         if(!self.playerHasMoved){
                            self.playerHasMoved = true;
                         }if(self.game.flipped){
-                            self.leftDown = false;
-                            self.rightDown = true;
+                            self.leftUp = false;
+                            self.rightUp = true;
                         }
                         break;
                     case cc.KEY.d:
 
-                        self.leftDown = false;
-                        self.rightDown = true;
+                        self.leftUp = false;
+                        self.rightUp = true;
                         if(!self.playerHasMoved){
                            self.playerHasMoved = true;
                         }
                         if(self.game.flipped){
-                            self.leftDown = true;
-                            self.rightDown = false;
+                            self.leftUp = true;
+                            self.rightUp = false;
                         }
                         break;
                 }
@@ -355,15 +359,15 @@ cc.Class({
             onKeyReleased: function(keyCode, event) {
                 switch(keyCode) {
                     case cc.KEY.a:
-                        self.leftDown = false;
+                        self.leftUp = false;
                         if(self.game.flipped){
-                            self.rightDown = false;
+                            self.rightUp = false;
                         }
                         break;
                     case cc.KEY.d:
-                        self.rightDown = false;
+                        self.rightUp = false;
                         if(self.game.flipped){
-                            self.leftDown = false;
+                            self.leftUp = false;
                         }
                         break;
                 }
@@ -400,7 +404,7 @@ cc.Class({
         this.playerRow = posY;
 
 	    var nextX = (this.hexagonWidth * (2 * posX + 1 + posY % 2) / 2)  - this.hexagonWidth/2;
-		var nextY = this.hexagonHeight * (3 * -posY + 1) / 4  + 64/4; // + (80-57)/2;
+		  var nextY = this.hexagonHeight * (3 * posY + 1) / 4  + 64/4; // + (80-57)/2;
 
         this.player.getComponent('Player').move(nextX, nextY, left);
 
@@ -509,13 +513,14 @@ cc.Class({
             }
 
             if(!this.playerSlide){
-                if(this.leftDown && (this.playerCol > 0 || (this.playerRow % 2 == 1))){
+              //console.log(this.playerCol);
+                if(this.leftUp && (this.playerCol > 0 || (this.playerRow % 2 == 1))){
 
                     if(this.canStepLeft){
                         this.placeMarker(this.playerCol - (1 - this.playerRow % 2), this.playerRow + 1, true);
                     }
 			}
-    			if(this.rightDown && this.playerCol < this.gridSizeX - 1){
+    			if(this.rightUp && this.playerCol < this.gridSizeX - 1){
 
     		        if(this.canStepRight){
     			        this.placeMarker(this.playerCol + (this.playerRow % 2), this.playerRow + 1, false);
@@ -525,17 +530,17 @@ cc.Class({
             }
         }
 
-        var elapsed =12 * dt;
+        var elapsed = 12 * dt;
 
         if(this.playerHasMoved){
             this.hexGroup.y += elapsed;
         }
 
         if(this.hexGroup.convertToWorldSpace(this.player.getPosition()).y < 448){
-            this.hexGroup.y += (64 * dt);
+            this.hexGroup.y -= (64 * dt);
         }
 
-        if(this.hexGroup.convertToWorldSpace(this.player.getPosition()).y > 520){
+        if(this.hexGroup.convertToWorldSpace(this.player.getPosition()).y < 100){
                 this.game.gameOver();
         }
 
@@ -548,7 +553,7 @@ cc.Class({
         for(var i = this.minRow; i < this.gridSizeY; i ++){
 
 		    for(var j = 0; j < this.gridSizeX; j ++){
-				if((i % 2 === 0 || j < this.gridSizeX - 1) && this.hexGroup.convertToWorldSpace(this.hexagonArray[i][j].getPosition()).y  > 520){
+				if((i % 2 === 0 || j < this.gridSizeX - 1) && this.hexGroup.convertToWorldSpace(this.hexagonArray[i][j].getPosition()).y  < 100){
 
                     this.hexagonArray[i][j].runAction(cc.sequence(cc.fadeOut(0.5),cc.callFunc(this.onFadedOut.bind(this.hexagonArray[i][j]), this)));
                     destroyedRow = true;
