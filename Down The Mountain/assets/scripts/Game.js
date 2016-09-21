@@ -42,9 +42,9 @@ cc.Class({
         this.reset();
     },
 
-    // startGame:function(){
-    //     this.gameState = this.GameState.Run;
-    // },
+    startGame:function(){
+        this.gameState = this.GameState.Run;
+    },
 
     reset:function(){
         this.score = 0;
@@ -74,11 +74,6 @@ cc.Class({
     },
     toggleStickiness: function(){
         this.sticky = !this.sticky;
-    },
-
-    startGame:function () {
-        this.gameState = this.GameState.Run;
-        this.gameplayWindow.active = true;
     },
 
     gameOver:function () {

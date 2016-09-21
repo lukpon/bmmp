@@ -19,10 +19,6 @@ cc.Class({
 
     },
 
-    startControlCallback: function(){
-        this.getComponent('Game').startGame();
-    },
-
     buttonControlCallback: function(){
         cc.director.loadScene('game');
     },
