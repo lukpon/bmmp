@@ -57,7 +57,7 @@ cc.Class({
     gainScore: function () {
         this.score += 1;
         // update the words of the scoreDisplay Label
-        this.scoreDisplay.string = 'Score: ' + this.score.toString();
+        this.scoreDisplay.string = this.score.toString();
         //dcc.audioEngine.playEffect(this.scoreAudio, false);
     },
     stick: function(duration){

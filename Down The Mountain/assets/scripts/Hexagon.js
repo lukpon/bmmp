@@ -155,7 +155,7 @@ cc.Class({
                 this.overlay.getComponent(cc.Sprite).setVisible(false);
                 break;
             case 'sticky':
-                this.group.game.stick(3000);
+                this.group.game.stick(1000);
                 break;
             case 'flip':
                 this.group.game.flipDirection();
