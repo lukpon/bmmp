@@ -12,6 +12,10 @@ cc.Class({
             default: null,
             type: cc.Prefab,
         },
+        background: {
+            default: null,
+            type: cc.Node,
+        },
         player: {
             default: null,
             type: cc.Node,
@@ -66,9 +70,8 @@ cc.Class({
             this.addHexagonRow(i);
         }
         this.hexGroup.addChild(this.player);
+        
         // initialize player
-
-
         this.player.getComponent('Player').group = this;
         var markerX = (this.hexagonWidth * (2 * this.playerCol + 1 + this.playerRow % 2) / 2) - this.hexagonWidth / 2;
         var markerY = (this.hexagonHeight * (3 * - this.playerRow + 1) / 4) + 64/4;
@@ -81,6 +84,9 @@ cc.Class({
         this.rightUp = false;
         this.canStepLeft = false;
         this.canStepRight = false;
+
+        //background
+        this.game.background.setPosition(0,100);
 
     },
 
@@ -475,6 +481,14 @@ cc.Class({
                 this.game.gameOver();
             }, 400);
         }
+
+        console.log(this.game.background.getPosition());
+        console.log(this.game.background.getPosition().y);
+
+        var backgroundPositionY = this.game.background.getPosition().y;
+        backgroundPositionY -= 30;
+        this.game.background.setPosition(0,backgroundPositionY);
+
     },
 
     checkPlayerStatus: function(row,col,event,spikeOut){
