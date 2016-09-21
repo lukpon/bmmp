@@ -206,7 +206,7 @@ cc.Class({
                 else if(rand >= 0.4 && rand < 0.85){
                     if(k > 0 && (rows_ground[k][l] == 1 || rows_ground[k][l] == 2)){
                         if(Math.random()<0.4){
-                             columns_overlay[l] = 5;
+                            // columns_overlay[l] = 5;
                         }
                     }
                 }else{
