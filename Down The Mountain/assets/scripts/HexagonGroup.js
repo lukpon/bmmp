@@ -192,11 +192,11 @@ cc.Class({
                     if(k > 0 && rows_ground[k][l] == 1 && treesPerRow < maxTreesPerRow){
                         if(l > 0 && l < columnLength){
                             if(columns_overlay[l-1] != 4){
-                                columns_overlay[l] = 4;
+                                // columns_overlay[l] = 4;
                                 treesPerRow++;
                             }
                         } else{
-                            columns_overlay[l] = 4;
+                            // columns_overlay[l] = 4;
                             treesPerRow++;
                         }
 
@@ -206,7 +206,7 @@ cc.Class({
                 else if(rand >= 0.4 && rand < 0.85){
                     if(k > 0 && (rows_ground[k][l] == 1 || rows_ground[k][l] == 2)){
                         if(Math.random()<0.4){
-                            columns_overlay[l] = 5;
+                            // columns_overlay[l] = 5;
                         }
                     }
                 }else{
@@ -217,9 +217,9 @@ cc.Class({
                         if(rand2 <= 0.2){
                             columns_overlay[l] = 6;
                         }else if(rand2 > 0.4 && rand2 <= 0.65){
-                            columns_overlay[l] = 7;
+                            // columns_overlay[l] = 7;
                         }else if(rand2 > 0.85){
-                            columns_overlay[l] = 8;
+                            // columns_overlay[l] = 8;
                         }
                     }
                 }
@@ -238,14 +238,14 @@ cc.Class({
             var offsetY1 = this.getRandomArbitrary(1,13);
 
             for(var u = 0; u<length1;u++){
-                if(u==0){
+                if(u==length1-1){
                     rows_ground[offsetY1+u][offsetX1] = 1;
                     rows_overlay[offsetY1+u][offsetX1] = 3;
                 }
                 else if((offsetY1+u)%2 == 0){
                     rows_ground[offsetY1+u][offsetX1] = 1;
                     rows_overlay[offsetY1+u][offsetX1] = 32;
-                }else{
+                }else {
                     rows_ground[offsetY1+u][offsetX1] = 1;
                     rows_overlay[offsetY1+u][offsetX1] = 31;
                 }
@@ -364,12 +364,14 @@ cc.Class({
                     self.leftUp = false;
                     if(self.game.flipped){
                         self.rightUp = false;
+                        self.game.flipped = false;
                     }
                     break;
                     case cc.KEY.d:
                     self.rightUp = false;
                     if(self.game.flipped){
                         self.leftUp = false;
+                        self.game.flipped = false;
                     }
                     break;
                 }
@@ -413,17 +415,18 @@ cc.Class({
     },
 
     moveFinished: function(){
+        this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').animateBounce();
         this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').checkAction();
         this.playerMove = true;
 
-        if(this.gridSizeY - this.playerRow < 8){
-            this.addHexagonRow(this.gridSizeY);
-            this.gridSizeY ++;
-        }
-
-        if(this.gridSizeY > 9 && (this.gridSizeY % 18) == 17){
-            this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
-        }
+        // if(this.gridSizeY - this.playerRow < 8){
+        //     this.addHexagonRow(this.gridSizeY);
+        //     this.gridSizeY ++;
+        // }
+        //
+        // if(this.gridSizeY > 9 && (this.gridSizeY % 18) == 17){
+        //     this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
+        // }
 
         this.checkNextSteps();
     },
@@ -491,6 +494,18 @@ cc.Class({
                     if(this.playerRow % 2 == 0 ){
                         columnLength -=  1;
                     }
+
+                    // if(this.leftUp && (this.playerCol > 0 || (this.playerRow % 2 == 1))) {
+                    //     if(this.canStepLeft){
+                    //         this.playerSlide = false;
+                    //         this.placeMarker(this.playerCol - (1 - this.playerRow % 2), this.playerRow + 1, true);
+                    //     }
+                    // } else if (this.rightUp && this.playerCol < this.gridSizeX - 1) {
+                    //     if(this.canStepRight){
+                    //         this.playerSlide = false;
+                    //         this.placeMarker(this.playerCol + (this.playerRow % 2), this.playerRow + 1, false);
+                    //     }
+                    // }
 
                     if(columnLength == this.gridSizeX){
                         if(nextWaterTile < this.playerCol){
@@ -560,6 +575,15 @@ cc.Class({
 
             for(var j = 0; j < this.gridSizeX; j ++){
                 if((i % 2 === 0 || j < this.gridSizeX - 1) && this.hexGroup.convertToWorldSpace(this.hexagonArray[i][j].getPosition()).y  < 100){
+
+                    if(this.gridSizeY - this.playerRow < 13){
+                        this.addHexagonRow(this.gridSizeY);
+                        this.gridSizeY ++;
+                    }
+
+                    if(this.gridSizeY > 9 && (this.gridSizeY % 18) == 17){
+                        this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
+                    }
 
                     this.hexagonArray[i][j].runAction(cc.sequence(cc.fadeOut(0.5),cc.callFunc(this.onFadedOut.bind(this.hexagonArray[i][j]), this)));
                     destroyedRow = true;

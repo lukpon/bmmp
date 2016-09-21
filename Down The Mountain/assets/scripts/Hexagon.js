@@ -15,17 +15,17 @@ cc.Class({
             default:null,
             type:cc.Animation,
         },
-        
+
         overlayType: "none",
         groundType: "none",
-        
+
     },
 
     // use this for initialization
     onLoad: function () {
         this.particles = this.emmitter;
         this.particles.stopSystem();
-        
+
         this.ground_tiles = {
             DEFAULT: 'none',
             NORMAL: 'isocube',
@@ -42,9 +42,9 @@ cc.Class({
 
         this.animation.parent = this;
         this.state = this.State.Visible;
-        
-       
-        
+
+
+
     },
 
 
@@ -55,13 +55,13 @@ cc.Class({
             this.overlay.removeFromParent(true);
             this.getComponent(cc.Sprite).spriteFrame = this.group.game.atlas.getSpriteFrame('othercube2');
         }
-        
+
     },
-    
+
     setSpriteFrame:function(frame){
 
         var sprite = this.getComponent(cc.Sprite);
-        
+
         if(frame === "zacken"){
             this.animation.play("zacken");
             sprite.spriteFrame = this.group.game.atlas.getSpriteFrame("cube2");
@@ -69,20 +69,20 @@ cc.Class({
             this.animation.stop();
             sprite.spriteFrame = this.group.game.atlas.getSpriteFrame(frame);
         }
-        
+
         this.groundType = frame;
- 
+
     },
-    
+
     setOverlay:function(overlayType){
-        
+
         if(overlayType==="none"){
             //cc.log("Overlay Type: "+ overlayType);
             return;
         }
-            
-        
-        /*var self = this; 
+
+
+        /*var self = this;
 
         if(this.overlay === null){
             // Create a new node and add sprite components.
@@ -90,7 +90,7 @@ cc.Class({
             self.node.addChild(self.overlay);
 
         }*/
-        
+
         var sprite = this.overlay.addComponent(cc.Sprite);
         sprite.spriteFrame = this.group.game.atlas.getSpriteFrame(overlayType);
         this.overlay.y += 32;
@@ -104,39 +104,47 @@ cc.Class({
         }
 
     },
-    
+
+    animateBounce: function() {
+        var sprite = this.getComponent(cc.Sprite);
+        sprite.node.runAction(cc.sequence(cc.moveBy(0.1,cc.p(0,-3)),cc.moveBy(0.1,cc.p(0,3))));
+    },
+
     canStepOverlay: function(){
-    
+
       var result = true;
-     
+
       switch(this.overlayType){
             case "tree":
                 result = false;
                 break;
             case "tree2":
                 result = false;
-                break;    
+                break;
             default:
                 result = true;
-                  
-      } 
-      return result; 
-        
+
+      }
+      return result;
+
     },
     checkAction:function(){
-       
+
 
         switch(this.groundType){
 
             case this.ground_tiles.NORMAL:
                 break;
-            case this.ground_tiles.FATAL:           
+            case this.ground_tiles.FATAL:
                 setTimeout(this.explosionParticlePlay.bind(this), 1000);
                 break;
-            case this.ground_tiles.SPIKE:
-                this.group.checkPlayerStatus(this.row, this.col, 'spike', this.spikeOut);         
+            case this.ground_tiles.TRAP:
+                setTimeout(this.trapDrop.bind(this), 1000);
                 break;
-            break;          
+            case this.ground_tiles.SPIKE:
+                this.group.checkPlayerStatus(this.row, this.col, 'spike', this.spikeOut);
+                break;
+            break;
 
         }
 
@@ -150,8 +158,8 @@ cc.Class({
                 this.group.game.stick(3000);
                 break;
             case 'flip':
-                this.group.game.flipDirection(10000);
-                break;    
+                this.group.game.flipDirection();
+                break;
             case 'trap':
                 this.group.checkPlayerStatus(this.row, this.col, 'trap', false);
                 break;

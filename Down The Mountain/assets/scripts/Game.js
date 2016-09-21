@@ -64,9 +64,8 @@ cc.Class({
         this.toggleStickiness();
         setTimeout(this.toggleStickiness.bind(this), duration);
     },
-    flipDirection: function(duration){
+    flipDirection: function(times){
         this.toggleFlip();
-        setTimeout(this.toggleFlip.bind(this), duration);
     },
 
     toggleFlip: function(){
