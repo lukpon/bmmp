@@ -321,6 +321,54 @@ cc.Class({
         // add keyboard event listener
         cc.eventManager.addListener({
             event: cc.EventListener.KEYBOARD,
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches:false,
+
+            onTouchBegan: function(touch, event) {
+                if(self.game.gameState !== self.game.GameState.Run){
+                    return;
+                }
+                if(!self.running && !self.playerHasMoved){
+                    self.startGame();
+                }
+                if (touch.getLocation().x < window.innerWidth/2) {
+                    self.leftUp = true;
+                    self.rightUp = false;
+                    if(!self.playerHasMoved){
+                        self.playerHasMoved = true;
+                    }if(self.game.flipped){
+                        self.leftUp = false;
+                        self.rightUp = true;
+                    }
+                } else {
+                    self.leftUp = false;
+                    self.rightUp = true;
+                    if(!self.playerHasMoved){
+                        self.playerHasMoved = true;
+                    }
+                    if(self.game.flipped){
+                        self.leftUp = true;
+                        self.rightUp = false;
+                    }
+                }
+                return true;
+            },
+
+            onTouchEnded: function(touch, event) {
+                if (touch.getLocation().x < window.innerWidth/2) {
+                    self.leftUp = false;
+                    if(self.game.flipped){
+                        self.rightUp = false;
+                        self.game.flipped = false;
+                    }
+                } else {
+                    self.rightUp = false;
+                    if(self.game.flipped){
+                        self.leftUp = false;
+                        self.game.flipped = false;
+                    }
+                }
+            },
 
             onKeyPressed: function(keyCode, event) {
 
@@ -424,20 +472,9 @@ cc.Class({
         } catch (e) {
             this.player.getComponent('Player').dropToDeath();
             setTimeout(function (){
-                cc.director.loadScene('end')
+                this.game.gameOver();
             }, 400);
-            // this.game.gameOver();
         }
-
-        // if(this.gridSizeY - this.playerRow < 8){
-        //     this.addHexagonRow(this.gridSizeY);
-        //     this.gridSizeY ++;
-        // }
-        //
-        // if(this.gridSizeY > 9 && (this.gridSizeY % 18) == 17){
-        //     this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
-        // }
-
     },
 
     checkPlayerStatus: function(row,col,event,spikeOut){

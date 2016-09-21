@@ -1,5 +1,3 @@
-
-
 cc.Class({
     extends: cc.Component,
 
@@ -60,6 +58,11 @@ cc.Class({
         this.scoreDisplay.string = 'Score: ' + this.score.toString();
         //dcc.audioEngine.playEffect(this.scoreAudio, false);
     },
+
+    getScore: function() {
+        return this.score.toString();
+    },
+
     stick: function(duration){
         this.toggleStickiness();
         setTimeout(this.toggleStickiness.bind(this), duration);
@@ -77,9 +80,10 @@ cc.Class({
 
     gameOver:function () {
         this.gameState = this.GameState.Over;
-        this.gameOverMenu.active = true;
+        // this.gameOverMenu.active = true;
         this.gameOverMenu.getComponent('GameOver').showScore(this.score);
         this.hexagonGroup.getComponent('HexagonGroup').stop();
+        cc.director.loadScene('end')
     },
 
     // called every frame, uncomment this function to activate update callback
