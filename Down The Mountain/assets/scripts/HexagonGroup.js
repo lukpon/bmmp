@@ -158,11 +158,11 @@ cc.Class({
                     var r = Math.random();
                     columns_ground[j] = 1
                     if(r <= 0.2){
-                        columns_ground[j] = 2;
+                        // columns_ground[j] = 2;
                     }else if(r > 0.2 && r <0.9){
                         columns_ground[j] = 1;
                     }else{
-                        columns_ground[j] = 9;
+                        // columns_ground[j] = 9;
                     }
                 }
 
@@ -215,11 +215,11 @@ cc.Class({
                         //flipped, trap, sticky...
                         var rand2 = Math.random();
                         if(rand2 <= 0.2){
-                            columns_overlay[l] = 6;
+                            // columns_overlay[l] = 6;
                         }else if(rand2 > 0.4 && rand2 <= 0.65){
                             // columns_overlay[l] = 7;
                         }else if(rand2 > 0.85){
-                            // columns_overlay[l] = 8;
+                            columns_overlay[l] = 8;
                         }
                     }
                 }
@@ -415,7 +415,6 @@ cc.Class({
     },
 
     moveFinished: function(){
-<<<<<<< HEAD
         try {
             this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').animateBounce();
             this.player.getComponent('Player').bounceWithCube();
@@ -429,11 +428,6 @@ cc.Class({
             }, 400);
             // this.game.gameOver();
         }
-=======
-        this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').animateBounce();
-        this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').checkAction();
-        this.playerMove = true;
->>>>>>> origin/master
 
         // if(this.gridSizeY - this.playerRow < 8){
         //     this.addHexagonRow(this.gridSizeY);
@@ -444,7 +438,6 @@ cc.Class({
         //     this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
         // }
 
-        this.checkNextSteps();
     },
 
     checkPlayerStatus: function(row,col,event,spikeOut){
@@ -460,6 +453,7 @@ cc.Class({
             break;
             case 'trap':
             if(this.playerRow == row && this.playerCol == col){
+                this.player.getComponent('Player').dropToDeath();
                 this.game.gameOver();
             }
             break;
@@ -555,14 +549,14 @@ cc.Class({
                         this.placeMarker(this.playerCol - (1 - this.playerRow % 2), this.playerRow + 1, true);
                     }
                 } else if (this.leftUp && (this.playerCol == 0 || (this.playerRow % 2 == 1))) {
-                    this.game.gameOver();
+                    this.placeMarker(this.playerCol - (1 - this.playerRow % 2), this.playerRow + 1, true);
                 }
                 if(this.rightUp && this.playerCol < this.gridSizeX - 1){
                     if(this.canStepRight){
                         this.placeMarker(this.playerCol + (this.playerRow % 2), this.playerRow + 1, false);
                     }
                 } else if (this.rightUp && this.playerCol == columnLength) {
-                    this.game.gameOver();
+                    this.placeMarker(this.playerCol + (this.playerRow % 2), this.playerRow + 1, false);
                 }
             }
         }
