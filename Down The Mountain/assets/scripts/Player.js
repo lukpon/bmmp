@@ -18,15 +18,6 @@ cc.Class({
     onLoad: function () {
 
     },
-
-    dropToDeath: function() {
-        this.group.player.runAction(cc.moveBy(0.3,cc.p(0,-300)));
-    },
-
-    bounceWithCube: function () {
-        this.group.player.runAction(cc.sequence(cc.moveBy(0.1,cc.p(0,-3)),cc.moveBy(0.1,cc.p(0,3))));
-    },
-
     move: function(nextX, nextY, left){
 
 
@@ -42,7 +33,7 @@ cc.Class({
             flipValue *= -1;
         }
 
-        var jumpAction = cc.sequence(cc.scaleTo(0.15, 0.9*flipValue, 1.3),cc.scaleTo(0.15, 1*flipValue, 1.0));
+        var jumpAction = cc.sequence(cc.scaleTo(0.15, flipValue, 1.2),cc.scaleTo(0.15, flipValue, 1.0));
 
 
 	      var bezier = [cc.p(this.group.player.getPosition().x - bezierX, this.group.player.getPosition().y), cc.p(nextX,nextY), cc.p(nextX,nextY)];
@@ -52,6 +43,7 @@ cc.Class({
 
 
         this.group.player.runAction(cc.sequence(spawn,cc.callFunc(this.group.moveFinished, this.group)));
+
 
 	},
 
