@@ -58,6 +58,14 @@ cc.Class({
 
     },
 
+    trapDrop: function() {
+        if(this.state == this.State.Visible){
+            this.group.checkPlayerStatus(this.row, this.col, 'trap');
+            this.getComponent(cc.Sprite).node.runAction(cc.moveBy(0.3,cc.p(0,-300)));
+        }
+
+    },
+
     setSpriteFrame:function(frame){
 
         var sprite = this.getComponent(cc.Sprite);
@@ -138,9 +146,6 @@ cc.Class({
             case this.ground_tiles.FATAL:
                 setTimeout(this.explosionParticlePlay.bind(this), 1000);
                 break;
-            case this.ground_tiles.TRAP:
-                setTimeout(this.trapDrop.bind(this), 1000);
-                break;
             case this.ground_tiles.SPIKE:
                 this.group.checkPlayerStatus(this.row, this.col, 'spike', this.spikeOut);
                 break;
@@ -161,7 +166,7 @@ cc.Class({
                 this.group.game.flipDirection();
                 break;
             case 'trap':
-                this.group.checkPlayerStatus(this.row, this.col, 'trap', false);
+                setTimeout(this.trapDrop.bind(this), 1000);
                 break;
 
 
