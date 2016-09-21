@@ -423,7 +423,10 @@ cc.Class({
             this.checkNextSteps();
         } catch (e) {
             this.player.getComponent('Player').dropToDeath();
-            this.game.gameOver();
+            setTimeout(function (){
+                cc.director.loadScene('end')
+            }, 400);
+            // this.game.gameOver();
         }
 
         // if(this.gridSizeY - this.playerRow < 8){
