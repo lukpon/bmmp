@@ -32,6 +32,13 @@ cc.Class({
         }
 
     },
+    aboutButtonControlCallback: function(){
+        console.log("pressed about");
+    },
+    
+    tutorialButtonControlCallback: function(){
+        console.log("pressed tutorial");
+    },
 
 
     // called every frame, uncomment this function to activate update callback

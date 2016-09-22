@@ -6,6 +6,10 @@ cc.Class({
             default:null,
             type:cc.Label,
         },
+        label2:{
+            default:null,
+            type:cc.Label,
+        },
     },
 
     // use this for initialization
@@ -14,7 +18,11 @@ cc.Class({
     },
 
     showScore:function(score){
-        this.label.string = 'Score: ' + score.toString();
+        this.label.string = score.toString() + ' Punkte';
+    },
+
+    showHighscore:function(score){
+        this.label2.string = score.toString();
     },
 
     // called every frame, uncomment this function to activate update callback
