@@ -30,6 +30,8 @@ cc.Class({
             DEFAULT: 'none',
             NORMAL: 'isocube',
             TRAP: 'trap',
+            STICKY: 'sticky',
+            FLIP: 'flip',
             FATAL: 'othercube',
             SPIKE: 'zacken',
         };
@@ -147,6 +149,15 @@ cc.Class({
             case this.ground_tiles.FATAL:
                 setTimeout(this.explosionParticlePlay.bind(this), 1000);
                 break;
+            case this.ground_tiles.TRAP:
+                setTimeout(this.trapDrop.bind(this), 1000);
+                break;
+            case this.ground_tiles.FLIP:
+                this.group.game.flipDirection();
+                break;
+            case this.ground_tiles.STICKY:
+                this.group.game.stick(1000);
+                break;
             case this.ground_tiles.SPIKE:
                 this.group.checkPlayerStatus(this.row, this.col, 'spike', this.spikeOut);
                 break;
@@ -169,8 +180,6 @@ cc.Class({
             case 'trap':
                 setTimeout(this.trapDrop.bind(this), 1000);
                 break;
-
-
         }
 
     }

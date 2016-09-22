@@ -165,9 +165,9 @@ cc.Class({
                     columns_ground[j] = 1
                     if(r <= 0.2){
                         // columns_ground[j] = 2;
-                    }else if(r > 0.2 && r <0.5){
+                    }else if(r > 0.2 && r <0.3){
                         columns_ground[j] = 8;
-                    }else if(r > 0.5 && r <0.9){
+                    }else if(r > 0.4 && r <0.5){
                         columns_ground[j] = 7;
                     }else{
                         // columns_ground[j] = 9;
@@ -484,7 +484,7 @@ cc.Class({
             this.player.getComponent('Player').dropToDeath();
             setTimeout(function (){
                 this.game.gameOver();
-            }, 400);
+            }, 800);
         }
 
     },
@@ -503,7 +503,9 @@ cc.Class({
             case 'trap':
             if(this.playerRow == row && this.playerCol == col){
                 this.player.getComponent('Player').dropToDeath();
-                this.game.gameOver();
+                setTimeout(function (){
+                    this.game.gameOver();
+                }, 800);
             }
             break;
             case 'spike':
