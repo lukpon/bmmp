@@ -28,8 +28,6 @@ cc.Class({
         },
     },
 
-
-
     // use this for initialization
     onLoad: function () {
 
@@ -38,6 +36,8 @@ cc.Class({
             Run : -1,
             Over: -1
         });
+
+        this.highscore = 0;
 
         this.gameState = this.GameState.Ready;
         this.hexagonGroup.getComponent('HexagonGroup').game = this;
@@ -61,6 +61,7 @@ cc.Class({
         // update the words of the scoreDisplay Label
         this.scoreDisplay.string = this.score.toString();
         //dcc.audioEngine.playEffect(this.scoreAudio, false);
+
     },
     stick: function(duration){
         this.toggleStickiness();
@@ -78,9 +79,29 @@ cc.Class({
     },
 
     gameOver:function () {
+
+        // Highscore via Local Storage
+        var ls = cc.sys.localStorage;
+        var value = this.score;
+        var key  = "highscore";
+
+        // prüfe, ob der aktuelle Score groesser ist als der bestehende Highscore
+        var existingHighscore = ls.getItem(key);
+        if (existingHighscore != null) {
+            if (value > existingHighscore) {
+                ls.setItem(key, value);
+            } 
+        } else {
+            ls.setItem(key, value);
+        }
+
+        // neuen Highscore festlegen
+        this.newHighscore = ls.getItem(key);
+
         this.gameState = this.GameState.Over;
         this.gameOverMenu.active = true;
         this.gameOverMenu.getComponent('GameOver').showScore(this.score);
+        this.gameOverMenu.getComponent('GameOver').showHighscore(this.newHighscore);
         this.hexagonGroup.getComponent('HexagonGroup').stop();
     },
 

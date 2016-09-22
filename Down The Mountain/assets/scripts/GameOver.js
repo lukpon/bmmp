@@ -22,7 +22,7 @@ cc.Class({
     },
 
     showHighscore:function(score){
-        this.label2.string = score.toString();
+        this.label2.string = 'Highscore: ' + score.toString();
     },
 
     // called every frame, uncomment this function to activate update callback
