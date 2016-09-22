@@ -184,8 +184,8 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_contentSize": {
       "__type__": "cc.Size",
@@ -204,7 +204,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0
+      "y": 1190
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -241,8 +241,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 480,
-      "height": 640
+      "width": 639,
+      "height": 3023
     },
     "_children": [],
     "_rotationX": 0,
@@ -279,7 +279,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "94ec861b-6527-4c31-b016-f4a49fe344a7"
+      "__uuid__": "d997deeb-c207-4a9c-a2b6-7fa0ebcf0581"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -974,8 +974,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 128,
-      "height": 128
+      "width": 104.44,
+      "height": 44.44
     },
     "_children": [],
     "_rotationX": 0,
@@ -1410,7 +1410,7 @@
       "__id__": 14
     },
     "atlas": {
-      "__uuid__": "a8bc9591-1916-48bb-a71f-02052b772eb0"
+      "__uuid__": "6d472d29-eacc-4e34-8fad-43df127622cd"
     },
     "gameplayWindow": {
       "__id__": 3
