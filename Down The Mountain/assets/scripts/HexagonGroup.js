@@ -482,8 +482,9 @@ cc.Class({
             this.checkNextSteps();
         } catch (e) {
             this.player.getComponent('Player').dropToDeath();
+            var self = this;
             setTimeout(function (){
-                this.game.gameOver();
+                self.game.gameOver();
             }, 800);
         }
 
