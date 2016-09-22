@@ -29,6 +29,7 @@ cc.Class({
         this.ground_tiles = {
             DEFAULT: 'none',
             NORMAL: 'isocube',
+            TRAP: 'trap',
             FATAL: 'othercube',
             SPIKE: 'zacken',
         };

@@ -165,8 +165,10 @@ cc.Class({
                     columns_ground[j] = 1
                     if(r <= 0.2){
                         // columns_ground[j] = 2;
-                    }else if(r > 0.2 && r <0.9){
-                        columns_ground[j] = 1;
+                    }else if(r > 0.2 && r <0.5){
+                        columns_ground[j] = 8;
+                    }else if(r > 0.5 && r <0.9){
+                        columns_ground[j] = 7;
                     }else{
                         // columns_ground[j] = 9;
                     }
@@ -198,11 +200,11 @@ cc.Class({
                     if(k > 0 && rows_ground[k][l] == 1 && treesPerRow < maxTreesPerRow){
                         if(l > 0 && l < columnLength){
                             if(columns_overlay[l-1] != 4){
-                                // columns_overlay[l] = 4;
+                                columns_overlay[l] = 4;
                                 treesPerRow++;
                             }
                         } else{
-                            // columns_overlay[l] = 4;
+                            columns_overlay[l] = 4;
                             treesPerRow++;
                         }
 
@@ -212,7 +214,7 @@ cc.Class({
                 else if(rand >= 0.4 && rand < 0.85){
                     if(k > 0 && (rows_ground[k][l] == 1 || rows_ground[k][l] == 2)){
                         if(Math.random()<0.4){
-                            // columns_overlay[l] = 5;
+                            columns_overlay[l] = 5;
                         }
                     }
                 }else{
@@ -225,7 +227,7 @@ cc.Class({
                         }else if(rand2 > 0.4 && rand2 <= 0.65){
                             // columns_overlay[l] = 7;
                         }else if(rand2 > 0.85){
-                            columns_overlay[l] = 8;
+                            // columns_overlay[l] = 8;
                         }
                     }
                 }
