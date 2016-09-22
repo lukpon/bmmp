@@ -70,7 +70,7 @@ cc.Class({
             this.addHexagonRow(i);
         }
         this.hexGroup.addChild(this.player);
-        
+
         // initialize player
         this.player.getComponent('Player').group = this;
         var markerX = (this.hexagonWidth * (2 * this.playerCol + 1 + this.playerRow % 2) / 2) - this.hexagonWidth / 2;
@@ -86,7 +86,7 @@ cc.Class({
         this.canStepRight = false;
 
         //background
-        this.game.background.setPosition(0,100);
+        this.game.background.setPosition(0,1190);
 
     },
 
@@ -326,7 +326,6 @@ cc.Class({
 
         // add keyboard event listener
         cc.eventManager.addListener({
-            event: cc.EventListener.KEYBOARD,
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches:false,
 
@@ -375,9 +374,13 @@ cc.Class({
                     }
                 }
             },
+        }, self.node);
+
+        // add keyboard event listener
+        cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
 
             onKeyPressed: function(keyCode, event) {
-
                 if(self.game.gameState !== self.game.GameState.Run){
                     return;
                 }
@@ -481,13 +484,6 @@ cc.Class({
                 this.game.gameOver();
             }, 400);
         }
-
-        console.log(this.game.background.getPosition());
-        console.log(this.game.background.getPosition().y);
-
-        var backgroundPositionY = this.game.background.getPosition().y;
-        backgroundPositionY -= 30;
-        this.game.background.setPosition(0,backgroundPositionY);
 
     },
 
@@ -616,10 +612,18 @@ cc.Class({
 
         if(this.playerHasMoved){
             this.hexGroup.y -= elapsed;
+            //Scroll BG
+            var backgroundPositionY = this.game.background.getPosition().y;
+            backgroundPositionY -= 1;
+            this.game.background.setPosition(0,backgroundPositionY);
         }
 
         if(this.hexGroup.convertToWorldSpace(this.player.getPosition()).y > 250){
             this.hexGroup.y -= (96 * dt);
+            //Scroll BG
+            var backgroundPositionY = this.game.background.getPosition().y;
+            backgroundPositionY -= 2;
+            this.game.background.setPosition(0,backgroundPositionY);
         }
 
         if(this.hexGroup.convertToWorldSpace(this.player.getPosition()).y < 100){
@@ -655,6 +659,8 @@ cc.Class({
         if(destroyedRow){
             this.minRow ++;
         }
+
+
 
     },
 
