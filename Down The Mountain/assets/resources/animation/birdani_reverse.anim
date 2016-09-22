@@ -13,33 +13,23 @@
         "spriteFrame": [
           {
             "frame": 0,
-            "value": {
-              "__uuid__": "da344015-58ae-460b-a5d6-4b39c060ee30"
-            }
+            "value": null
           },
           {
             "frame": 0.48333333333333334,
-            "value": {
-              "__uuid__": "f263e32a-f222-45ee-bbce-fba29c93f9f2"
-            }
+            "value": null
           },
           {
             "frame": 0.95,
-            "value": {
-              "__uuid__": "da344015-58ae-460b-a5d6-4b39c060ee30"
-            }
+            "value": null
           },
           {
             "frame": 1.5,
-            "value": {
-              "__uuid__": "f263e32a-f222-45ee-bbce-fba29c93f9f2"
-            }
+            "value": null
           },
           {
             "frame": 2,
-            "value": {
-              "__uuid__": "f263e32a-f222-45ee-bbce-fba29c93f9f2"
-            }
+            "value": null
           }
         ]
       }
