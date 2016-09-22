@@ -37,8 +37,6 @@ cc.Class({
             Over: -1
         });
 
-        this.highscore = 0;
-
         this.gameState = this.GameState.Ready;
         this.hexagonGroup.getComponent('HexagonGroup').game = this;
         this.reset();
@@ -46,6 +44,12 @@ cc.Class({
 
     startGame:function(){
         this.gameState = this.GameState.Run;
+    },
+
+    displayMenu:function(){
+        this.gameState = this.GameState.Menu;
+        this.hexagonGroup.getComponent('HexagonGroup').stop();
+        cc.director.loadScene('start');
     },
 
     reset:function(){

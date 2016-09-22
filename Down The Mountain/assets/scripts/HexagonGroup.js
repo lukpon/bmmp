@@ -433,6 +433,9 @@ cc.Class({
                         self.game.flipped = false;
                     }
                     break;
+                    case cc.KEY.x:
+                        self.game.displayMenu();
+                    break;
                 }
             }
         }, self.node);
@@ -492,27 +495,28 @@ cc.Class({
 
     checkPlayerStatus: function(row,col,event,spikeOut){
 
+        var self = this;
 
         switch(event){
 
             case 'explosion':
             if(this.playerRow == row && this.playerCol == col){
                 //cc.log('Game Over');
-                this.game.gameOver();
+                self.game.gameOver();
             }
             break;
             case 'trap':
             if(this.playerRow == row && this.playerCol == col){
                 this.player.getComponent('Player').dropToDeath();
                 setTimeout(function (){
-                    this.game.gameOver();
+                    self.game.gameOver();
                 }, 800);
             }
             break;
             case 'spike':
             if(this.playerRow == row && this.playerCol == col){
                 if(spikeOut){
-                    this.game.gameOver();
+                    self.game.gameOver();
                 }
             }
             break;

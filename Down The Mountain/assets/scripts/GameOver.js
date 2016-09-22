@@ -14,11 +14,15 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        // this.label.string = 'Score: ' + this.game.getScore();
+        
     },
 
     showScore:function(score){
-        this.label.string = score.toString() + ' Punkte';
+        if (score == 1) {
+            this.label.string = score.toString() + ' Punkt';
+        } else {
+            this.label.string = score.toString() + ' Punkte';
+        }
     },
 
     showHighscore:function(score){
