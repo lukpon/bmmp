@@ -164,7 +164,6 @@ cc.Class({
                 }
                 else{
                     var r = Math.random();
-                    console.log(r);
                     columns_ground[j] = 1
                     if(r <= 0.2){
                         // columns_ground[j] = 2;

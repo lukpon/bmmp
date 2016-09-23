@@ -38,6 +38,8 @@ cc.Class({
             SPIKE: 'zacken',
         };
 
+        this.playerStatus = 'neutral';
+
         this.State = cc.Enum({
             Visible: -1,
             Invisible : -1,
@@ -71,8 +73,16 @@ cc.Class({
 
     },
 
-    poisonPlayer: function() {
-        var status = 'poisoned';
+    getPlayerStatus: function() {
+        return this.playerStatus;
+    },
+
+    poisonPlayer: function(state) {
+        if (state == 'active') {
+            this.playerStatus = 'poisoned';
+        } else if (state = 'cure'){
+            this.playerStatus = 'neutral';
+        }
     },
 
     setSpriteFrame:function(frame){
@@ -168,7 +178,7 @@ cc.Class({
                 this.group.game.gameOver();
                 break;
             case this.ground_tiles.POISON:
-                this.poisonPlayer();
+                this.poisonPlayer('active');
                 break;
             case this.ground_tiles.SPIKE:
                 this.group.checkPlayerStatus(this.row, this.col, 'spike', this.spikeOut);
@@ -185,6 +195,9 @@ cc.Class({
                 break;
             case 'sticky':
                 this.group.game.stick(3000);
+                break;
+            case 'potion':
+                this.poisonPlayer('cure');
                 break;
             case 'flip':
                 this.group.game.flipDirection();
