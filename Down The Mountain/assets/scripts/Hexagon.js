@@ -110,7 +110,7 @@ cc.Class({
 
         var sprite = this.overlay.addComponent(cc.Sprite);
         sprite.spriteFrame = this.group.game.atlas.getSpriteFrame(overlayType);
-        this.overlay.y += 32;
+        this.overlay.y += 48;
 
         this.overlayType = overlayType;
 
@@ -158,9 +158,9 @@ cc.Class({
             case this.ground_tiles.TRAP:
                 setTimeout(this.trapDrop.bind(this), 1000);
                 break;
-            case this.ground_tiles.FLIP:
-                this.group.game.flipDirection();
-                break;
+            // case this.ground_tiles.FLIP:
+            //     this.group.game.flipDirection();
+            //     break;
             case this.ground_tiles.STICKY:
                 this.group.game.stick(1000);
                 break;

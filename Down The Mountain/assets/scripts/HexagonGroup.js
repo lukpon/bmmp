@@ -164,6 +164,7 @@ cc.Class({
                 }
                 else{
                     var r = Math.random();
+                    console.log(r);
                     columns_ground[j] = 1
                     if(r <= 0.2){
                         // columns_ground[j] = 2;
@@ -225,11 +226,11 @@ cc.Class({
                     }
                 }else{
 
-                    if(k > 0 && rows_ground[k][l] != 0){
+                    if(k > 0 && rows_ground[k][l] != 0 && rows_ground[k][l] != 10){
                         //flipped, trap, sticky...
                         var rand2 = Math.random();
                         if(rand2 <= 0.2){
-                            // columns_overlay[l] = 6;
+                            columns_overlay[l] = 6;
                         }else if(rand2 > 0.4 && rand2 <= 0.65){
                             // columns_overlay[l] = 7;
                         }else if(rand2 > 0.85){
@@ -253,15 +254,15 @@ cc.Class({
 
             for(var u = 0; u<length1;u++){
                 if(u==length1-1){
-                    rows_ground[offsetY1+u][offsetX1] = 1;
-                    rows_overlay[offsetY1+u][offsetX1] = 3;
+                    // rows_ground[offsetY1+u][offsetX1] = 1;
+                    // rows_overlay[offsetY1+u][offsetX1] = 3;
                 }
                 else if((offsetY1+u)%2 == 0){
-                    rows_ground[offsetY1+u][offsetX1] = 1;
-                    rows_overlay[offsetY1+u][offsetX1] = 32;
+                    rows_ground[offsetY1+u][offsetX1] = 32;
+                    rows_overlay[offsetY1+u][offsetX1] = 99;
                 }else {
-                    rows_ground[offsetY1+u][offsetX1] = 1;
-                    rows_overlay[offsetY1+u][offsetX1] = 31;
+                    rows_ground[offsetY1+u][offsetX1] = 31;
+                    rows_overlay[offsetY1+u][offsetX1] = 99;
                 }
             }
         }
@@ -547,10 +548,10 @@ cc.Class({
 
 
         if(this.playerMove && !this.game.sticky){
-            var currentOverlay = this.level_overlay[this.playerRow][this.playerCol];
+            var currentBase = this.level_base[this.playerRow][this.playerCol];
             //cc.log("Current Overlay: "+currentOverlay);
 
-            if(currentOverlay == 3 || currentOverlay == 31 || currentOverlay == 32){
+            if(currentBase == 3 || currentBase == 31 || currentBase == 32){
 
                 this.playerSlide = true;
                 var nextWaterTile = -1;
@@ -561,7 +562,7 @@ cc.Class({
                 }
 
                 for(var i = 0; i < columnLength; i++){
-                    var nextRow = this.level_overlay[this.playerRow+1];
+                    var nextRow = this.level_base[this.playerRow+1];
                     if(nextRow[i] == 3 || nextRow[i] == 31 || nextRow[i] == 32){
                         nextWaterTile = i;
                     }
