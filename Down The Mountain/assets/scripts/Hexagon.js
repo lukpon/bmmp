@@ -33,6 +33,8 @@ cc.Class({
             STICKY: 'sticky',
             FLIP: 'flip',
             FATAL: 'othercube',
+            LAVA: 'lava',
+            POISON: 'posion',
             SPIKE: 'zacken',
         };
 
@@ -67,6 +69,10 @@ cc.Class({
             this.getComponent(cc.Sprite).node.runAction(cc.moveBy(0.3,cc.p(0,-300)));
         }
 
+    },
+
+    poisonPlayer: function() {
+        var status = 'poisoned';
     },
 
     setSpriteFrame:function(frame){
@@ -157,6 +163,12 @@ cc.Class({
                 break;
             case this.ground_tiles.STICKY:
                 this.group.game.stick(1000);
+                break;
+            case this.ground_tiles.LAVA:
+                this.group.game.gameOver();
+                break;
+            case this.ground_tiles.POISON:
+                this.poisonPlayer();
                 break;
             case this.ground_tiles.SPIKE:
                 this.group.checkPlayerStatus(this.row, this.col, 'spike', this.spikeOut);

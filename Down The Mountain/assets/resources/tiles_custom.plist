@@ -4,7 +4,22 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>isocube.png</key>
+            <key>StachelSteinNeu2.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{256,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>flip.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -19,7 +34,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>star.png</key>
+            <key>isocube.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -34,7 +49,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>sticky.png</key>
+            <key>lava.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -49,7 +64,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>trap.png</key>
+            <key>posion.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -64,6 +79,66 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
+            <key>stairs.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{320,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>star.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{384,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>sticky.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{448,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>trap.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{512,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>tree.png</key>
             <dict>
                 <key>aliases</key>
@@ -75,7 +150,52 @@
                 <key>spriteSourceSize</key>
                 <string>{64,64}</string>
                 <key>textureRect</key>
-                <string>{{256,0},{64,64}}</string>
+                <string>{{576,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>tree2.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{640,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>waterplane_l.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{704,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>waterplane_r.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{768,0},{64,64}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -91,9 +211,9 @@
             <key>realTextureFileName</key>
             <string>tiles_custom.png</string>
             <key>size</key>
-            <string>{320,64}</string>
+            <string>{832,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:7384b3fa2685e221ae2727c1cf669b03:1df26cf6173b9485b838354093323cb0:035125b29439b1217c449ac25f62db00$</string>
+            <string>$TexturePacker:SmartUpdate:7fabb19b88d162a342bf1bcd15a2ee5c:4f06b79060ddcaac5a7ddde9940ea732:035125b29439b1217c449ac25f62db00$</string>
             <key>textureFileName</key>
             <string>tiles_custom.png</string>
         </dict>

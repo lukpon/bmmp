@@ -169,6 +169,10 @@ cc.Class({
                         columns_ground[j] = 8;
                     }else if(r > 0.4 && r <0.5){
                         columns_ground[j] = 7;
+                    }else if(r > 0.5 && r <0.55){
+                        columns_ground[j] = 10;
+                    }else if(r > 0.55 && r <0.65){
+                        columns_ground[j] = 11;
                     }else{
                         // columns_ground[j] = 9;
                     }
@@ -314,6 +318,12 @@ cc.Class({
             break;
             case 9:
             result= "zacken";
+            break;
+            case 10:
+            result= "lava";
+            break;
+            case 11:
+            result= "posion";
             break;
             default:
             result = "none";
