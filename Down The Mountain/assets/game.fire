@@ -282,7 +282,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "d997deeb-c207-4a9c-a2b6-7fa0ebcf0581"
+      "__uuid__": "bc4d88e5-ab34-434f-9f23-3f9e02c9eb7c"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -362,16 +362,10 @@
       "__id__": 7
     },
     "_enabled": true,
-    "_defaultClip": {
-      "__uuid__": "4fbbf0d2-ec93-4e8c-a116-2f5b9a9390db"
-    },
+    "_defaultClip": null,
     "_clips": [
-      {
-        "__uuid__": "4fbbf0d2-ec93-4e8c-a116-2f5b9a9390db"
-      },
-      {
-        "__uuid__": "b52828fe-8695-4f19-bb0a-de46449a52a0"
-      }
+      null,
+      null
     ],
     "playOnLoad": true
   },
@@ -383,9 +377,7 @@
       "__id__": 7
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "24cae9f0-bccc-4f65-b32c-aa36d6f58fdb"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -574,7 +566,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "e1374f2c-338c-4aa8-81bb-f062f03cacca"
+      "__uuid__": "e7947044-2770-40b7-a6fc-3482b8010ed7"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -1601,7 +1593,7 @@
       "__id__": 17
     },
     "atlas": {
-      "__uuid__": "6d472d29-eacc-4e34-8fad-43df127622cd"
+      "__uuid__": "904cc8cc-f077-47ed-b430-c3baa237612e"
     },
     "gameplayWindow": {
       "__id__": 3
