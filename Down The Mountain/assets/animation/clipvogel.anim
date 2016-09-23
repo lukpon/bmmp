@@ -3,21 +3,13 @@
   "_name": "clipvogel",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 1.08,
+  "_duration": 0.4166666666666667,
   "sample": 60,
   "speed": 1,
   "wrapMode": 2,
   "curveData": {
     "props": {
-      "position": [
-        {
-          "frame": 0,
-          "value": [
-            200,
-            -990
-          ]
-        }
-      ]
+      "position": []
     },
     "comps": {
       "cc.Sprite": {
@@ -25,31 +17,19 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "fe23caea-3f8e-4cb2-ad22-7e52ba6b96d2"
+              "__uuid__": "24cae9f0-bccc-4f65-b32c-aa36d6f58fdb"
             }
           },
           {
-            "frame": 0.25,
+            "frame": 0.2,
             "value": {
-              "__uuid__": "8ecc78e0-074b-44c4-a96d-c4b557b2e334"
+              "__uuid__": "86d9040b-9884-42f2-ad53-1dc1098dfa13"
             }
           },
           {
-            "frame": 0.5333333333333333,
+            "frame": 0.4,
             "value": {
-              "__uuid__": "fe23caea-3f8e-4cb2-ad22-7e52ba6b96d2"
-            }
-          },
-          {
-            "frame": 0.7833333333333333,
-            "value": {
-              "__uuid__": "8ecc78e0-074b-44c4-a96d-c4b557b2e334"
-            }
-          },
-          {
-            "frame": 1.0666666666666667,
-            "value": {
-              "__uuid__": "8ecc78e0-074b-44c4-a96d-c4b557b2e334"
+              "__uuid__": "24cae9f0-bccc-4f65-b32c-aa36d6f58fdb"
             }
           }
         ]

@@ -14,32 +14,24 @@
           {
             "frame": 0.016666666666666666,
             "value": {
-              "__uuid__": "8ecc78e0-074b-44c4-a96d-c4b557b2e334"
+              "__uuid__": "24cae9f0-bccc-4f65-b32c-aa36d6f58fdb"
             }
           },
           {
             "frame": 0.6166666666666667,
-            "value": {
-              "__uuid__": "fe23caea-3f8e-4cb2-ad22-7e52ba6b96d2"
-            }
+            "value": null
           },
           {
             "frame": 1.2333333333333334,
-            "value": {
-              "__uuid__": "8ecc78e0-074b-44c4-a96d-c4b557b2e334"
-            }
+            "value": null
           },
           {
             "frame": 1.9666666666666666,
-            "value": {
-              "__uuid__": "fe23caea-3f8e-4cb2-ad22-7e52ba6b96d2"
-            }
+            "value": null
           },
           {
             "frame": 2.8666666666666667,
-            "value": {
-              "__uuid__": "fe23caea-3f8e-4cb2-ad22-7e52ba6b96d2"
-            }
+            "value": null
           }
         ]
       }
