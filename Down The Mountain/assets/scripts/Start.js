@@ -7,6 +7,31 @@ cc.Class({
             type: cc.Node
         },
 
+        tutorialPanel: {
+            default:null,
+            type: cc.Node
+        },
+
+        playButton: {
+            default:null,
+            type: cc.Node
+        },
+
+        closeButton: {
+            default:null,
+            type: cc.Node
+        },
+
+        aboutButton: {
+            default:null,
+            type: cc.Node
+        },
+
+        tutorialButton: {
+            default:null,
+            type: cc.Node
+        },
+
         labelAbout: {
             default:null,
             type: cc.Label
@@ -15,16 +40,32 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        this.aboutPanel.active = false;
     },
 
     showAboutPanel:function () {
-        if (this.aboutPanel.active) {
-            this.aboutPanel.active = false;
-        } else {
-            this.aboutPanel.active = true;
-        }
+        this.playButton.active = false;
+        this.tutorialButton.active = false;
+        this.aboutButton.active = false;
+        this.aboutPanel.active = true;
+        this.closeButton.active = true;
     },
+
+    showTutorialPanel:function () {
+        this.playButton.active = false;
+        this.tutorialButton.active = false;
+        this.aboutButton.active = false;
+        this.tutorialPanel.active = true;
+        this.closeButton.active = true;
+    },
+
+    closePanels:function(){
+        this.tutorialPanel.active = false;
+        this.aboutPanel.active = false;
+        this.closeButton.active = false;
+        this.aboutButton.active = true;
+        this.playButton.active = true;
+        this.tutorialButton.active = true;
+    }
 
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {

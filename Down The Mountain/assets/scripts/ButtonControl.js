@@ -23,11 +23,6 @@ cc.Class({
 
     },
 
-    tutorialButtonControlCallback: function(){
-        console.log("pressed tutorial");
-    },
-
-
     // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
 
