@@ -231,7 +231,7 @@ cc.Class({
                         if(rand2 <= 0.2){
                             columns_overlay[l] = 6;
                         }else if(rand2 > 0.4 && rand2 <= 0.65){
-                            // columns_overlay[l] = 7;
+                            columns_overlay[l] = 12;
                         }else if(rand2 > 0.85){
                             // columns_overlay[l] = 8;
                         }
@@ -326,6 +326,9 @@ cc.Class({
             break;
             case 11:
             result= "posion";
+            break;
+            case 12:
+            result= "potion";
             break;
             default:
             result = "none";

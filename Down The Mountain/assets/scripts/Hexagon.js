@@ -74,14 +74,21 @@ cc.Class({
     },
 
     getPlayerStatus: function() {
-        return this.playerStatus;
+        var self = this;
+        if (self.getPlayerStatus() == 'poisoned') {
+            self.group.game.gameOver();
+        }
     },
 
-    poisonPlayer: function(state) {
+    changePlayerState: function(state) {
+        var self = this;
         if (state == 'active') {
-            this.playerStatus = 'poisoned';
-        } else if (state = 'cure'){
-            this.playerStatus = 'neutral';
+            self.playerStatus = 'poisoned';
+            // setTimeout(function() {
+            //     self.getPlayerStatus();
+            // }, 5000)
+        } else if (state = 'cured'){
+            self.playerStatus = 'neutral';
         }
     },
 
@@ -178,7 +185,7 @@ cc.Class({
                 this.group.game.gameOver();
                 break;
             case this.ground_tiles.POISON:
-                this.poisonPlayer('active');
+                this.changePlayerState('active');
                 break;
             case this.ground_tiles.SPIKE:
                 this.group.checkPlayerStatus(this.row, this.col, 'spike', this.spikeOut);
@@ -197,7 +204,8 @@ cc.Class({
                 this.group.game.stick(3000);
                 break;
             case 'potion':
-                this.poisonPlayer('cure');
+                this.changePlayerState('cured');
+                this.overlay.getComponent(cc.Sprite).setVisible(false);
                 break;
             case 'flip':
                 this.group.game.flipDirection();
