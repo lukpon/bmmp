@@ -48,6 +48,8 @@ cc.Class({
         this.playerMove = true;
         this.playerSlide = false;
 
+        this.speed = 64;
+
         this.hexagonArray = [];
         this.hexagonWidth = 64;
         this.hexagonHeight = 64;
@@ -74,7 +76,7 @@ cc.Class({
         // initialize player
         this.player.getComponent('Player').group = this;
         var markerX = (this.hexagonWidth * (2 * this.playerCol + 1 + this.playerRow % 2) / 2) - this.hexagonWidth / 2;
-        var markerY = (this.hexagonHeight * (3 * - this.playerRow + 1) / 4) + 64/4;
+        var markerY = (this.hexagonHeight * (3 * - this.playerRow + 1) / 4) + 128/4;
         this.markerStartPosition = cc.p(markerX, markerY);
         this.player.setPosition(this.markerStartPosition);
         this.player.setLocalZOrder(1000);
@@ -480,7 +482,7 @@ cc.Class({
         this.playerRow = posY;
 
         var nextX = (this.hexagonWidth * (2 * posX + 1 + posY % 2) / 2)  - this.hexagonWidth/2;
-        var nextY = this.hexagonHeight * (3 * posY + 1) / 4  + 64/4; // + (80-57)/2;
+        var nextY = this.hexagonHeight * (3 * posY + 1) / 4  + 128/4; // + (80-57)/2;
 
         this.player.getComponent('Player').move(nextX, nextY, left);
 
@@ -492,6 +494,7 @@ cc.Class({
             this.player.getComponent('Player').bounceWithCube();
             this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').checkAction();
             this.playerMove = true;
+            this.speed += 0.5;
             this.checkNextSteps();
         } catch (e) {
             this.player.getComponent('Player').dropToDeath();
@@ -627,7 +630,7 @@ cc.Class({
             }
         }
 
-        var elapsed = 64 * dt;
+        var elapsed = this.speed * dt;
 
         if(this.playerHasMoved){
             this.hexGroup.y -= elapsed;
@@ -638,7 +641,7 @@ cc.Class({
         }
 
         if(this.hexGroup.convertToWorldSpace(this.player.getPosition()).y > 250){
-            this.hexGroup.y -= (96 * dt);
+            this.hexGroup.y -= ((32 + this.speed) * dt);
             //Scroll BG
             var backgroundPositionY = this.game.background.getPosition().y;
             backgroundPositionY -= 2;
