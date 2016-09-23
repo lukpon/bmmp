@@ -1,0 +1,57 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "vogelreverse",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 2.8833333333333333,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "8ecc78e0-074b-44c4-a96d-c4b557b2e334"
+            }
+          },
+          {
+            "frame": 0.6166666666666667,
+            "value": {
+              "__uuid__": "fe23caea-3f8e-4cb2-ad22-7e52ba6b96d2"
+            }
+          },
+          {
+            "frame": 1.2333333333333334,
+            "value": {
+              "__uuid__": "8ecc78e0-074b-44c4-a96d-c4b557b2e334"
+            }
+          },
+          {
+            "frame": 1.9666666666666666,
+            "value": {
+              "__uuid__": "fe23caea-3f8e-4cb2-ad22-7e52ba6b96d2"
+            }
+          },
+          {
+            "frame": 2.8666666666666667,
+            "value": {
+              "__uuid__": "fe23caea-3f8e-4cb2-ad22-7e52ba6b96d2"
+            }
+          }
+        ]
+      }
+    },
+    "props": {
+      "scaleX": [
+        {
+          "frame": 0.016666666666666666,
+          "value": -1
+        }
+      ]
+    }
+  },
+  "events": []
+}
