@@ -45,7 +45,6 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-
     },
 
     showAboutPanel:function () {
@@ -83,9 +82,9 @@ cc.Class({
 
         function creditsRun () {
             setTimeout(function () {
-                //console.log('y='+i);
+                console.log('y='+i);
                 i++;
-                if (i < 30) {
+                if (i < 320) {
                     self.creditsContainer.setPosition(0,i); 
                     creditsRun();
                 } else {
