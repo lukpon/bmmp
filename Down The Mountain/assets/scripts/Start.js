@@ -12,22 +12,12 @@ cc.Class({
             type: cc.Node
         },
 
-        playButton: {
+        startPanel: {
             default:null,
             type: cc.Node
         },
 
         closeButton: {
-            default:null,
-            type: cc.Node
-        },
-
-        aboutButton: {
-            default:null,
-            type: cc.Node
-        },
-
-        tutorialButton: {
             default:null,
             type: cc.Node
         },
@@ -41,25 +31,33 @@ cc.Class({
             default:null,
             type: cc.Node
         },
+
+        highscoreLabel: {
+            default:null,
+            type: cc.Label
+        },
     },
 
     // use this for initialization
     onLoad: function () {
+        var ls = cc.sys.localStorage;
+        var key  = "highscore";
+
+        var existingHighscore = ls.getItem(key);
+        this.highscoreLabel.string = 'Highscore: ' + existingHighscore.toString();
+
+        this.tutorialCurrentPage = 1;
     },
 
     showAboutPanel:function () {
-        this.playButton.active = false;
-        this.tutorialButton.active = false;
-        this.aboutButton.active = false;
+        this.startPanel.active = false;
         this.aboutPanel.active = true;
-        this.closeButton.active = true;
+        this.closeButton.active = true; 
         this.startCredits();
     },
 
     showTutorialPanel:function () {
-        this.playButton.active = false;
-        this.tutorialButton.active = false;
-        this.aboutButton.active = false;
+        this.startPanel.active = false;
         this.tutorialPanel.active = true;
         this.closeButton.active = true;
     },
@@ -68,9 +66,27 @@ cc.Class({
         this.tutorialPanel.active = false;
         this.aboutPanel.active = false;
         this.closeButton.active = false;
-        this.aboutButton.active = true;
-        this.playButton.active = true;
-        this.tutorialButton.active = true;
+        this.startPanel.active = true;
+    },
+
+    nextTutorialPage:function(){
+        console.log('next');
+        if (this.tutorialCurrentPage < 3) {
+            this.tutorialCurrentPage += 1;
+            console.log(this.tutorialCurrentPage);
+        } else {
+            console.log('ende erreicht');
+        }
+    },
+
+    prevTutorialPage:function(){
+        console.log('prev');
+        if (this.tutorialCurrentPage > 1) {
+            this.tutorialCurrentPage -= 1;
+            console.log(this.tutorialCurrentPage);
+        } else {
+            console.log('anfang erreicht');
+        }
     },
 
     startCredits: function(){
@@ -82,7 +98,7 @@ cc.Class({
 
         function creditsRun () {
             setTimeout(function () {
-                console.log('y='+i);
+                //console.log('y='+i);
                 i++;
                 if (i < 320) {
                     self.creditsContainer.setPosition(0,i); 

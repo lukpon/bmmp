@@ -2,7 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        pauseOverlay: {
+        pausePanel: {
             default:null,
             type: cc.Node
         },
@@ -10,7 +10,6 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        
     },
 
     buttonControlCallback: function(){
@@ -20,15 +19,16 @@ cc.Class({
 
         if(!cc.director.isPaused()){
             cc.director.pause();
-            this.pauseOverlay.active = true;
+            this.pausePanel.active = true;
         }else{
             cc.director.resume();
-            this.pauseOverlay.active = false;
+            this.pausePanel.active = false;
         }
 
     },
 
     menuButtonControlCallback: function(){
+        this.pausePanel.active = false;
         cc.director.loadScene('start');
     },
 
