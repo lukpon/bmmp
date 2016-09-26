@@ -36,6 +36,12 @@ cc.Class({
             default:null,
             type: cc.Label
         },
+
+        tutorialContainer: {
+            default:null,
+            type: cc.Node
+        },
+
     },
 
     // use this for initialization
@@ -46,7 +52,9 @@ cc.Class({
         var existingHighscore = ls.getItem(key);
         this.highscoreLabel.string = 'Highscore: ' + existingHighscore.toString();
 
+        this.tutorialPages = this.tutorialContainer.getChildren().length;
         this.tutorialCurrentPage = 1;
+        console.log(this.tutorialCurrentPage);
     },
 
     showAboutPanel:function () {
@@ -71,22 +79,26 @@ cc.Class({
 
     nextTutorialPage:function(){
         console.log('next');
-        if (this.tutorialCurrentPage < 3) {
+        if (this.tutorialCurrentPage < this.tutorialPages) {
             this.tutorialCurrentPage += 1;
-            console.log(this.tutorialCurrentPage);
+        } else if (this.tutorialCurrentPage == this.tutorialPages) {
+            this.tutorialCurrentPage = 1;
         } else {
             console.log('ende erreicht');
         }
+        console.log(this.tutorialCurrentPage);
     },
 
     prevTutorialPage:function(){
         console.log('prev');
         if (this.tutorialCurrentPage > 1) {
             this.tutorialCurrentPage -= 1;
-            console.log(this.tutorialCurrentPage);
+        } else if (this.tutorialCurrentPage == 1) {
+            this.tutorialCurrentPage = this.tutorialPages;
         } else {
             console.log('anfang erreicht');
         }
+        console.log(this.tutorialCurrentPage);
     },
 
     startCredits: function(){
