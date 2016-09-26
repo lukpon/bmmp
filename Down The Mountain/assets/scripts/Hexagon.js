@@ -50,8 +50,6 @@ cc.Class({
         this.animation.parent = this;
         this.state = this.State.Visible;
 
-
-
     },
 
 
@@ -71,25 +69,6 @@ cc.Class({
             this.getComponent(cc.Sprite).node.runAction(cc.moveBy(0.3,cc.p(0,-300)));
         }
 
-    },
-
-    getPlayerStatus: function() {
-        var self = this;
-        if (self.getPlayerStatus() == 'poisoned') {
-            self.group.game.gameOver();
-        }
-    },
-
-    changePlayerState: function(state) {
-        var self = this;
-        if (state == 'active') {
-            self.playerStatus = 'poisoned';
-            // setTimeout(function() {
-            //     self.getPlayerStatus();
-            // }, 5000)
-        } else if (state = 'cured'){
-            self.playerStatus = 'neutral';
-        }
     },
 
     setSpriteFrame:function(frame){
@@ -185,7 +164,7 @@ cc.Class({
                 this.group.game.gameOver();
                 break;
             case this.ground_tiles.POISON:
-                this.changePlayerState('active');
+                this.group.checkPlayerStatus(this.row, this.col, 'poison');
                 break;
             case this.ground_tiles.SPIKE:
                 this.group.checkPlayerStatus(this.row, this.col, 'spike', this.spikeOut);
@@ -204,7 +183,7 @@ cc.Class({
                 this.group.game.stick(3000);
                 break;
             case 'potion':
-                this.changePlayerState('cured');
+                this.group.checkPlayerStatus(this.row, this.col, 'antipoison');
                 this.overlay.getComponent(cc.Sprite).setVisible(false);
                 break;
             case 'flip':

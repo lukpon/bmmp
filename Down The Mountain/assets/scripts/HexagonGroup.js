@@ -80,6 +80,7 @@ cc.Class({
         this.markerStartPosition = cc.p(markerX, markerY);
         this.player.setPosition(this.markerStartPosition);
         this.player.setLocalZOrder(1000);
+        this.playerState = "neutral";
 
         // initialize input
         this.leftUp = false;
@@ -252,14 +253,15 @@ cc.Class({
             var offsetY1 = this.getRandomArbitrary(1,13);
 
             for(var u = 0; u<length1;u++){
+                var r = Math.random();
                 if(u==length1-1){
                     // rows_ground[offsetY1+u][offsetX1] = 1;
                     // rows_overlay[offsetY1+u][offsetX1] = 3;
-                }
-                else if((offsetY1+u)%2 == 0){
+                } else if (r <= 0.5){   //(offsetY1+u)%2 == 0
+                    // console.log(offsetX1);
                     rows_ground[offsetY1+u][offsetX1] = 32;
                     rows_overlay[offsetY1+u][offsetX1] = 99;
-                }else {
+                } else {
                     rows_ground[offsetY1+u][offsetX1] = 31;
                     rows_overlay[offsetY1+u][offsetX1] = 99;
                 }
@@ -502,9 +504,9 @@ cc.Class({
         } catch (e) {
             this.player.getComponent('Player').dropToDeath();
             var self = this;
-            setTimeout(function (){
-                self.game.gameOver();
-            }, 800);
+            // setTimeout(function (){
+            //     self.game.gameOver();
+            // }, 800);
         }
 
     },
@@ -517,7 +519,6 @@ cc.Class({
 
             case 'explosion':
             if(this.playerRow == row && this.playerCol == col){
-                //cc.log('Game Over');
                 self.game.gameOver();
             }
             break;
@@ -528,6 +529,19 @@ cc.Class({
                     self.game.gameOver();
                 }, 800);
             }
+            break;
+            case 'poison':
+            self.playerState = "poisoned";
+            self.player.getComponent("Player").player.spriteFrame = self.player.getComponent("Player").atlas.getSpriteFrame('player_poisoned');
+            setTimeout(function (){
+                if(self.playerState == "poisoned") {
+                    self.game.gameOver();
+                }
+            }, 5000);
+            break;
+            case 'antipoison':
+            self.playerState = "neutral";
+            self.player.getComponent("Player").player.spriteFrame = self.player.getComponent("Player").atlas.getSpriteFrame('player');
             break;
             case 'spike':
             if(this.playerRow == row && this.playerCol == col){

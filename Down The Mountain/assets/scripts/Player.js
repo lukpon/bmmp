@@ -11,7 +11,10 @@ cc.Class({
             default: null,
             url: cc.AudioClip
         },
-
+        atlas: {
+            default: null,
+            type: cc.SpriteAtlas
+        },
     },
 
     // use this for initialization
