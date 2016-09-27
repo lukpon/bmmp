@@ -251,10 +251,12 @@ cc.Class({
         if (this.spawnSlides) {
             //Water slides
 
-            var length1 = this.getRandomArbitrary(2,7);
+            var length1 = this.getRandomArbitrary(3,7);
 
             var offsetX1 = this.getRandomArbitrary(1,3);
             var offsetY1 = this.getRandomArbitrary(1,13);
+
+            var currentOffset = offsetX1;
 
             for(var u = 0; u<length1;u++){
                 var r = Math.random();
@@ -262,12 +264,25 @@ cc.Class({
                     // rows_ground[offsetY1+u][offsetX1] = 1;
                     // rows_overlay[offsetY1+u][offsetX1] = 3;
                 } else if ((offsetY1+u)%2 == 0){   //(offsetY1+u)%2 == 0
-                    rows_ground[offsetY1+u][offsetX1] = 32;
-                    rows_overlay[offsetY1+u][offsetX1] = 99;
+                    if (r < 0.51) {
+                        rows_ground[offsetY1+u][currentOffset] = 32;
+                        rows_overlay[offsetY1+u][currentOffset] = 99;
+                    } else {
+                        rows_ground[offsetY1+u][currentOffset+1] = 31;
+                        rows_overlay[offsetY1+u][currentOffset+1] = 99;
+                        currentOffset += 1;
+                    }
                 } else {
-                    rows_ground[offsetY1+u][offsetX1] = 31;
-                    rows_overlay[offsetY1+u][offsetX1] = 99;
+                    if(r < 0.51) {
+                        rows_ground[offsetY1+u][currentOffset-1] = 32;
+                        rows_overlay[offsetY1+u][currentOffset-1] = 99;
+                        currentOffset -= 1;
+                    } else {
+                        rows_ground[offsetY1+u][currentOffset] = 31;
+                        rows_overlay[offsetY1+u][currentOffset] = 99;
+                    }
                 }
+                console.log(currentOffset);
             }
         }
 
@@ -528,9 +543,9 @@ cc.Class({
             case 'trap':
             if(this.playerRow == row && this.playerCol == col){
                 this.player.getComponent('Player').dropToDeath();
-                setTimeout(function (){
-                    self.game.gameOver();
-                }, 800);
+                // setTimeout(function (){
+                //     self.game.gameOver();
+                // }, 800);
             }
             break;
             case 'poison':

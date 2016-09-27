@@ -117,12 +117,7 @@ cc.Class({
                 if(self.gameState == self.GameState.Over){
                     switch(keyCode) {
                         case cc.KEY.space:
-                        self.runAction(cc.sequence(
-                            this.gameOverMenu.fadeOut(),
-                            cc.callFunc(function () {
-                                 cc.director.loadScene('game');
-                            })
-                        ));
+                        cc.director.loadScene('game');
                         break;
                     }
                 }
