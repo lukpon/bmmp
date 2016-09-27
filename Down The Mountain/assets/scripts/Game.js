@@ -123,6 +123,7 @@ cc.Class({
                                  cc.director.loadScene('_game');
                             })
                         ));
+                        cc.director.loadScene('_game');
                         break;
                     }
                 }
