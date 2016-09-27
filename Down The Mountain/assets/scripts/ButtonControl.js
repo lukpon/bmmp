@@ -13,7 +13,7 @@ cc.Class({
     },
 
     buttonControlCallback: function(){
-        cc.director.loadScene('game');
+        cc.director.loadScene('_game');
     },
     pauseButtonControlCallback: function(){
 
@@ -28,8 +28,8 @@ cc.Class({
     },
 
     menuButtonControlCallback: function(){
-        this.pausePanel.active = false;
-        cc.director.loadScene('start');
+        //this.pausePanel.active = false;
+        cc.director.loadScene('_start');
     },
 
     // called every frame, uncomment this function to activate update callback

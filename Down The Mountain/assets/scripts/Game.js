@@ -49,7 +49,7 @@ cc.Class({
     displayMenu:function(){
         this.gameState = this.GameState.Menu;
         this.hexagonGroup.getComponent('HexagonGroup').stop();
-        cc.director.loadScene('start');
+        cc.director.loadScene('_start');
     },
 
     reset:function(){
@@ -120,7 +120,7 @@ cc.Class({
                         self.runAction(cc.sequence(
                             this.gameOverMenu.fadeOut(),
                             cc.callFunc(function () {
-                                 cc.director.loadScene('game');
+                                 cc.director.loadScene('_game');
                             })
                         ));
                         break;
