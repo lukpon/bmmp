@@ -94,7 +94,7 @@ cc.Class({
         if (existingHighscore != null) {
             if (value > existingHighscore) {
                 ls.setItem(key, value);
-            } 
+            }
         } else {
             ls.setItem(key, value);
         }
@@ -107,6 +107,27 @@ cc.Class({
         this.gameOverMenu.getComponent('GameOver').showScore(this.score);
         this.gameOverMenu.getComponent('GameOver').showHighscore(this.newHighscore);
         this.hexagonGroup.getComponent('HexagonGroup').stop();
+
+        // add keyboard event listener
+        var self = this;
+        cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
+
+            onKeyPressed: function(keyCode, event) {
+                if(self.gameState == self.GameState.Over){
+                    switch(keyCode) {
+                        case cc.KEY.space:
+                        self.runAction(cc.sequence(
+                            this.gameOverMenu.fadeOut(),
+                            cc.callFunc(function () {
+                                 cc.director.loadScene('game');
+                            })
+                        ));
+                        break;
+                    }
+                }
+            }
+        }, self.node);
     },
 
     // called every frame, uncomment this function to activate update callback

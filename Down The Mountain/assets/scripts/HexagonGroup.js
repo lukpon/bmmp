@@ -149,10 +149,11 @@ cc.Class({
 
         var self = this;
 
-
         //Ground layer: distribution of normal and fatal tiles
         for(var i = 0; i<rows; i++){
             var columnLength = columns;
+
+            var trapsPerRow = 0;
 
             if(i % 2 == 1 ){
                 columnLength -=  1;
@@ -163,22 +164,25 @@ cc.Class({
                 if(i===0 || i===rows-1){
                     columns_ground[j] = 1;
                 }
-                else{
+                else if (trapsPerRow < 3){
                     var r = Math.random();
                     columns_ground[j] = 1
-                    if(r <= 0.2){
-                        // columns_ground[j] = 2;
-                    }else if(r > 0.2 && r <0.3){
+                    if(r <= 0.1){
                         columns_ground[j] = 8;
-                    }else if(r > 0.4 && r <0.5){
+                        trapsPerRow += 1;
+                    }else if(r > 0.1 && r <0.2){
                         columns_ground[j] = 7;
-                    }else if(r > 0.5 && r <0.55){
+                        trapsPerRow += 1;
+                    }else if(r > 0.2 && r <0.3){
                         columns_ground[j] = 10;
-                    }else if(r > 0.55 && r <0.65){
+                        trapsPerRow += 1;
+                    }else if(r > 0.3 && r <0.4){
                         columns_ground[j] = 11;
-                    }else{
-                        // columns_ground[j] = 9;
+                        trapsPerRow += 1;
                     }
+                }
+                else {
+                    columns_ground[j] = 1;
                 }
 
             }
@@ -257,8 +261,7 @@ cc.Class({
                 if(u==length1-1){
                     // rows_ground[offsetY1+u][offsetX1] = 1;
                     // rows_overlay[offsetY1+u][offsetX1] = 3;
-                } else if (r <= 0.5){   //(offsetY1+u)%2 == 0
-                    // console.log(offsetX1);
+                } else if ((offsetY1+u)%2 == 0){   //(offsetY1+u)%2 == 0
                     rows_ground[offsetY1+u][offsetX1] = 32;
                     rows_overlay[offsetY1+u][offsetX1] = 99;
                 } else {
@@ -503,7 +506,7 @@ cc.Class({
             this.checkNextSteps();
         } catch (e) {
             this.player.getComponent('Player').dropToDeath();
-            var self = this;
+            // var self = this;
             // setTimeout(function (){
             //     self.game.gameOver();
             // }, 800);
