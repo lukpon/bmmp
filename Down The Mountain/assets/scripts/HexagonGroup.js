@@ -67,6 +67,7 @@ cc.Class({
         this.hexGroup.y -= this.hexagonHeight + 320 ;
 
         this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
+        // this.generatePredefinedRows(this.gridSizeY*2, this.gridSizeX, 1);
 
         for(var i = 0; i < this.gridSizeY; i ++){
             this.addHexagonRow(i);
@@ -137,6 +138,30 @@ cc.Class({
 
     },
 
+    generatePredefinedRows:function(rows, columns, style) {
+        //building viable ground layer
+        var rows_ground = [];
+        var columns_ground = [];
+
+        //building overlay layer
+        var rows_overlay = [];
+        var columns_overlay = [];
+
+        var self = this;
+
+        switch (style){
+            case 1:
+                rows_ground = [[1,1,1,1,1],[10,10,10,10],[1,1,1,1,1],[10,10,10,10],[1,1,1,1,1],[10,10,10,10],[1,1,1,1,1],[10,10,10,10],[1,1,1,1,1],[10,10,10,10],[1,1,1,1,1],[10,10,10,10],];
+                rows_overlay = [[4,4,0,4,4],[0,0,0,0],[4,4,0,4,4],[0,0,0,0],[4,4,0,4,4],[0,0,0,0],[4,4,0,4,4],[0,0,0,0],[4,4,0,4,4],[0,0,0,0],[4,4,0,4,4],[0,0,0,0],];
+            break;
+
+            default:
+            true
+        }
+        this.level_base = this.level_base.concat(rows_ground);
+        this.level_overlay = this.level_overlay.concat(rows_overlay);
+    },
+
     generateRandomRows:function(rows, columns){
 
         //building viable ground layer
@@ -163,8 +188,7 @@ cc.Class({
 
                 if(i===0 || i===rows-1){
                     columns_ground[j] = 1;
-                }
-                else if (trapsPerRow < 3){
+                } else if (trapsPerRow <= 1){
                     var r = Math.random();
                     columns_ground[j] = 1
                     if(r <= 0.1){
@@ -180,8 +204,7 @@ cc.Class({
                         columns_ground[j] = 11;
                         trapsPerRow += 1;
                     }
-                }
-                else {
+                } else {
                     columns_ground[j] = 1;
                 }
 
@@ -207,7 +230,7 @@ cc.Class({
 
                 columns_overlay[l] = 0;
                 var rand = Math.random();
-                if(rand < 0.4){
+                if(rand < 0.2){
                     if(k > 0 && rows_ground[k][l] == 1 && treesPerRow < maxTreesPerRow){
                         if(l > 0 && l < columnLength){
                             if(columns_overlay[l-1] != 4){
@@ -282,7 +305,6 @@ cc.Class({
                         rows_overlay[offsetY1+u][currentOffset] = 99;
                     }
                 }
-                console.log(currentOffset);
             }
         }
 
@@ -401,13 +423,11 @@ cc.Class({
                     self.leftUp = false;
                     if(self.game.flipped){
                         self.rightUp = false;
-                        self.game.flipped = false;
                     }
                 } else {
                     self.rightUp = false;
                     if(self.game.flipped){
                         self.leftUp = false;
-                        self.game.flipped = false;
                     }
                 }
             },
@@ -458,14 +478,12 @@ cc.Class({
                     self.leftUp = false;
                     if(self.game.flipped){
                         self.rightUp = false;
-                        self.game.flipped = false;
                     }
                     break;
                     case cc.KEY.d:
                     self.rightUp = false;
                     if(self.game.flipped){
                         self.leftUp = false;
-                        self.game.flipped = false;
                     }
                     break;
                     case cc.KEY.x:
@@ -513,6 +531,7 @@ cc.Class({
 
     moveFinished: function(){
         try {
+            this.game.flipped = false;
             this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').animateBounce();
             this.player.getComponent('Player').bounceWithCube();
             this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').checkAction();
@@ -555,7 +574,7 @@ cc.Class({
                 if(self.playerState == "poisoned") {
                     self.game.gameOver();
                 }
-            }, 5000);
+            }, 7000);
             break;
             case 'antipoison':
             self.playerState = "neutral";

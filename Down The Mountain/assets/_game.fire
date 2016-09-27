@@ -41,7 +41,7 @@
     "_tag": -1,
     "_opacityModifyRGB": false,
     "_id": "b5ae62cf-7cad-483c-920c-17229a5810d1",
-    "autoReleaseAssets": true
+    "autoReleaseAssets": false
   },
   {
     "__type__": "cc.Node",
@@ -285,7 +285,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "9ba3622b-9674-4e6b-8301-9d8201ba975c"
+      "__uuid__": "0822ae18-0697-4f18-9a88-dd0af2160588"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -569,7 +569,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "1cf92a9e-3108-466f-b675-4bc5365f6ff0"
+      "__uuid__": "542bdfbb-6d61-4cac-99ae-809e4437b88d"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -600,7 +600,9 @@
     "jumpAudio": {
       "__uuid__": "19b1639b-bd25-4e4e-8db1-4aeec8723501"
     },
-    "atlas": null
+    "atlas": {
+      "__uuid__": "b279ac9c-a7c1-4045-b958-b18f41fc4483"
+    }
   },
   {
     "__type__": "c7e2cW7njZES6PwqBid7m2Z",
@@ -826,7 +828,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "b8d331df-9151-40df-98da-65e9302f1b2b"
+      "__uuid__": "a6fe8208-beae-403c-a153-c777d7864c75"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -1609,7 +1611,7 @@
     "_tag": -1,
     "_opacityModifyRGB": false,
     "_id": "5bf78hjliBB7ap6TGtkyIF+",
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 54
@@ -1658,7 +1660,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 200
+      "y": -31
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1732,7 +1734,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 150
+      "y": -81
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2073,7 +2075,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "110e2581-1737-49f7-9a58-f4ad35578939"
+      "__uuid__": "d3689510-9530-413f-a6b1-58916c201b23"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -2163,7 +2165,7 @@
       "__id__": 17
     },
     "atlas": {
-      "__uuid__": "a88fe564-b20b-407e-ae0d-a3d9c5a6e78a"
+      "__uuid__": "b1a0be5f-f123-45be-9416-e8a376c88103"
     },
     "gameplayWindow": {
       "__id__": 3
