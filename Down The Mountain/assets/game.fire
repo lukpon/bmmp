@@ -285,7 +285,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "bc4d88e5-ab34-434f-9f23-3f9e02c9eb7c"
+      "__uuid__": "9ba3622b-9674-4e6b-8301-9d8201ba975c"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -541,7 +541,7 @@
     "_scaleY": 1,
     "_position": {
       "__type__": "cc.Vec2",
-      "x": -56,
+      "x": 0,
       "y": 0
     },
     "_skewX": 0,
@@ -569,7 +569,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "e7947044-2770-40b7-a6fc-3482b8010ed7"
+      "__uuid__": "1cf92a9e-3108-466f-b675-4bc5365f6ff0"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -599,7 +599,8 @@
     },
     "jumpAudio": {
       "__uuid__": "19b1639b-bd25-4e4e-8db1-4aeec8723501"
-    }
+    },
+    "atlas": null
   },
   {
     "__type__": "c7e2cW7njZES6PwqBid7m2Z",
@@ -825,7 +826,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "ddd2f341-ff7a-4963-ba05-19491353a0ae"
+      "__uuid__": "b8d331df-9151-40df-98da-65e9302f1b2b"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -1657,7 +1658,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 181
+      "y": -31
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -1666,7 +1667,7 @@
     "_tag": -1,
     "_opacityModifyRGB": false,
     "_id": "8408fkG2+JBG6vubfF/j7GQ",
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 43
@@ -1731,7 +1732,7 @@
     "_position": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 131
+      "y": -81
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -2072,7 +2073,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "70462f8c-571b-4ef3-92dd-3be28838680c"
+      "__uuid__": "9473a74c-6299-42e9-9c77-160024fedac8"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -2162,7 +2163,7 @@
       "__id__": 17
     },
     "atlas": {
-      "__uuid__": "904cc8cc-f077-47ed-b430-c3baa237612e"
+      "__uuid__": "a88fe564-b20b-407e-ae0d-a3d9c5a6e78a"
     },
     "gameplayWindow": {
       "__id__": 3
