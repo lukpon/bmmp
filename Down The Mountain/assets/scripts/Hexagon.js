@@ -37,6 +37,7 @@ cc.Class({
             POISON: 'posion',
             SPIKE: 'zacken',
             MISSING: 'missing',
+            JUMP: 'jump',
         };
 
         this.playerStatus = 'neutral';
