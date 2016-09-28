@@ -30,6 +30,11 @@ cc.Class({
             default:null,
             type: cc.Node
         },
+        sound:{
+            default: null,
+            type:cc.Node,
+        
+        },
     },
 
     // use this for initialization
@@ -121,12 +126,6 @@ cc.Class({
                 if(self.gameState == self.GameState.Over){
                     switch(keyCode) {
                         case cc.KEY.space:
-                        self.runAction(cc.sequence(
-                            this.gameOverMenu.fadeOut(),
-                            cc.callFunc(function () {
-                                 cc.director.loadScene('_game');
-                            })
-                        ));
                         cc.director.loadScene('_game');
                         break;
                     }

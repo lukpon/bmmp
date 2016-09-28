@@ -26,31 +26,30 @@ cc.Class({
             default:null,
             url: cc.AudioClip
         },
+        
     },
 
     // use this for initialization
     onLoad: function () {
-       // this.startMusic();
-
-    },
-
-    // MUSIC ###############################
-    startMusic: function() {
         cc.audioEngine.playMusic(this.startMusic, true);
         cc.audioEngine.setMusicVolume(0.3);
         this.musicWillPlay = true;
     },
 
-    stopMusic: function(){
-        cc.audioEngine.stopMusic();
-        this.musicWillPlay = false;
+    // MUSIC ###############################
+    startMusic: function() {
+        
     },
 
     toggleMusic: function() {
         //prüfe, ob Music läuft oder nicht
         if (this.musicWillPlay) {
+            this.startScene.toggleSoundButton(false);
+            this.musicWillPlay = false;
            cc.audioEngine.pauseMusic();
        } else {
+            this.startScene.toggleSoundButton(true);
+            this.musicWillPlay = true;
             cc.audioEngine.resumeMusic();
        }
     },

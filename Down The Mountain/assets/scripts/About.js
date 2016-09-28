@@ -18,6 +18,11 @@ cc.Class({
             default:null,
             type: cc.Node
         },
+        sound:{
+            default: null,
+            type:cc.Node,
+        
+        },
     },
 
     // use this for initialization

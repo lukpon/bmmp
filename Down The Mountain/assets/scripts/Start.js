@@ -10,6 +10,21 @@ cc.Class({
             default:null,
             type: cc.Label
         },
+        sound:{
+            default: null,
+            type:cc.Node,
+        
+        },
+        soundOnOff: {
+            default:null,
+            type: cc.Node
+        },
+        atlas: {
+            default:null,
+            type:cc.SpriteAtlas
+        },
+        
+
     },
 
     // use this for initialization
@@ -20,6 +35,21 @@ cc.Class({
 
         var existingHighscore = ls.getItem(key);
         this.highscoreLabel.string = 'Highscore: ' + existingHighscore.toString();
+
+        this.sound.getComponent('Sound').startScene = this;
+
+    },
+
+    toggleSoundButton:function(on){
+        if(on){
+            this.soundOnOff.getComponent(cc.Button).normalSprite = this.atlas.getSpriteFrame('btn_sound_on');
+            this.soundOnOff.getComponent(cc.Button).pressedSprite = this.atlas.getSpriteFrame('btn_sound_on');
+            this.soundOnOff.getComponent(cc.Button).hoverSprite = this.atlas.getSpriteFrame('btn_sound_on');
+        }else{
+            this.soundOnOff.getComponent(cc.Button).normalSprite = this.atlas.getSpriteFrame('btn_sound_off');
+            this.soundOnOff.getComponent(cc.Button).pressedSprite = this.atlas.getSpriteFrame('btn_sound_off');
+            this.soundOnOff.getComponent(cc.Button).hoverSprite = this.atlas.getSpriteFrame('btn_sound_off');
+        }
     },
 
     showAbout:function () {
