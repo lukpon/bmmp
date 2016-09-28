@@ -723,7 +723,6 @@ cc.Class({
             }
 
             if(this.playerMove && !this.playerSlide && !this.playerJumping){
-                cc.log("jump");
                 var columnLength = this.gridSizeX;
                 if(this.playerRow % 2 == 0 ){
                     columnLength -=  1;
