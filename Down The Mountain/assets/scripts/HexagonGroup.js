@@ -47,6 +47,7 @@ cc.Class({
         this.playerRow = 0;
         this.playerMove = true;
         this.playerSlide = false;
+        this.playerJumping = false;
 
         this.speed = 64;
 
@@ -54,6 +55,8 @@ cc.Class({
         this.hexagonWidth = 64;
         this.hexagonHeight = 64;
         this.minRow = 0;
+
+        this.lastMove = 'left';
 
         this.currentDepth = 0;
 
@@ -152,7 +155,7 @@ cc.Class({
 
         switch (style){
             case 1:
-            rows_ground = [[1,1,11,1,44],[1,13,41,1],[44,1,1,1,1],[1,1,43,1],[44,32,1,1,44],[32,1,10,1],[31,1,41,10,1],[31,41,10,1],[1,31,41,10,7],[7,1,10,42],[1,1,1,1,44],[1,43,1,44]];
+            rows_ground = [[1,1,11,1,44],[1,13,13,1],[44,1,1,13,1],[1,1,43,1],[44,32,13,1,44],[32,1,10,1],[31,1,41,10,1],[31,41,10,1],[1,31,41,10,7],[7,1,10,42],[1,1,1,1,44],[1,43,1,44]];
             break;
         }
         var tempGroundArray = [];
@@ -493,6 +496,7 @@ cc.Class({
                 if(!self.running && !self.playerHasMoved){
                     self.startGame();
                 }
+                if(this.playerJumping){return;}
 
                 switch(keyCode) {
                     case cc.KEY.a:
@@ -566,16 +570,27 @@ cc.Class({
     },
 
     placeMarker: function(posX, posY, left){
-        this.playerMove = false;
+            this.playerMove = false;
 
-        this.playerCol = posX;
-        this.playerRow = posY;
+            this.playerCol = posX;
+            this.playerRow = posY;
 
-        var nextX = (this.hexagonWidth * (2 * posX + 1 + posY % 2) / 2)  - this.hexagonWidth/2;
-        var nextY = this.hexagonHeight * (3 * posY + 1) / 4  + 128/4; // + (80-57)/2;
+            var nextX = (this.hexagonWidth * (2 * posX + 1 + posY % 2) / 2)  - this.hexagonWidth/2;
+            var nextY = this.hexagonHeight * (3 * posY + 1) / 4  + 128/4; // + (80-57)/2;
 
-        this.player.getComponent('Player').move(nextX, nextY, left);
+            this.player.getComponent('Player').move(nextX, nextY, left, false);
 
+    },
+    jumpMarker: function(posX, posY, left){
+            this.playerJumping = true;
+
+            this.playerCol = posX;
+            this.playerRow = posY;
+
+            var nextX = (this.hexagonWidth * (2 * posX + 1 + posY % 2) / 2)  - this.hexagonWidth/2;
+            var nextY = this.hexagonHeight * (3 * posY + 1) / 4  + 128/4; // + (80-57)/2;
+
+            this.player.getComponent('Player').move(nextX, nextY, left, true);
     },
 
     moveFinished: function(){
@@ -589,10 +604,21 @@ cc.Class({
             this.checkNextSteps();
         } catch (e) {
             this.player.getComponent('Player').dropToDeath();
-            // var self = this;
-            // setTimeout(function (){
-            //     self.game.gameOver();
-            // }, 800);
+        }
+
+    },
+    jumpFinished: function(){
+        try {
+            this.game.flipped = false;
+            this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').animateBounce();
+            this.player.getComponent('Player').bounceWithCube();
+            this.playerJumping = false;
+            this.hexagonArray[this.playerRow][this.playerCol].getComponent('Hexagon').checkAction();
+
+            this.speed += 0.5;
+            this.checkNextSteps();
+        } catch (e) {
+            this.player.getComponent('Player').dropToDeath();
         }
 
     },
@@ -611,9 +637,6 @@ cc.Class({
             case 'trap':
             if(this.playerRow == row && this.playerCol == col){
                 this.player.getComponent('Player').dropToDeath();
-                // setTimeout(function (){
-                //     self.game.gameOver();
-                // }, 800);
             }
             break;
             case 'poison':
@@ -646,15 +669,12 @@ cc.Class({
 
     // called every frame, uncomment this function to activate update callback
     update: function (dt) {
-
         if(!this.running){
             return;
         }
 
-
         if(this.playerMove && !this.game.sticky){
             var currentBase = this.level_base[this.playerRow][this.playerCol];
-            //cc.log("Current Overlay: "+currentOverlay);
 
             if(currentBase == 3 || currentBase == 31 || currentBase == 32){
 
@@ -680,18 +700,6 @@ cc.Class({
                         columnLength -=  1;
                     }
 
-                    // if(this.leftUp && (this.playerCol > 0 || (this.playerRow % 2 == 1))) {
-                    //     if(this.canStepLeft){
-                    //         this.playerSlide = false;
-                    //         this.placeMarker(this.playerCol - (1 - this.playerRow % 2), this.playerRow + 1, true);
-                    //     }
-                    // } else if (this.rightUp && this.playerCol < this.gridSizeX - 1) {
-                    //     if(this.canStepRight){
-                    //         this.playerSlide = false;
-                    //         this.placeMarker(this.playerCol + (this.playerRow % 2), this.playerRow + 1, false);
-                    //     }
-                    // }
-
                     if(columnLength == this.gridSizeX){
                         if(nextWaterTile < this.playerCol){
                             this.placeMarker(nextWaterTile, this.playerRow + 1, false);
@@ -714,13 +722,15 @@ cc.Class({
 
             }
 
-            if(!this.playerSlide){
+            if(this.playerMove && !this.playerSlide && !this.playerJumping){
+                cc.log("jump");
                 var columnLength = this.gridSizeX;
                 if(this.playerRow % 2 == 0 ){
                     columnLength -=  1;
                 }
                 if(this.leftUp && (this.playerCol > 0 || (this.playerRow % 2 == 1))){
                     if(this.canStepLeft){
+                        this.lastMove = 'left';
                         this.placeMarker(this.playerCol - (1 - this.playerRow % 2), this.playerRow + 1, true);
                     }
                 } else if (this.leftUp && (this.playerCol == 0 || (this.playerRow % 2 == 1))) {
@@ -728,6 +738,7 @@ cc.Class({
                 }
                 if(this.rightUp && this.playerCol < this.gridSizeX - 1){
                     if(this.canStepRight){
+                        this.lastMove = 'right';
                         this.placeMarker(this.playerCol + (this.playerRow % 2), this.playerRow + 1, false);
                     }
                 } else if (this.rightUp && this.playerCol == columnLength) {
@@ -787,8 +798,6 @@ cc.Class({
         if(destroyedRow){
             this.minRow ++;
         }
-
-
 
     },
 

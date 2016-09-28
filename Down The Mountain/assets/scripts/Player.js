@@ -30,10 +30,14 @@ cc.Class({
         this.group.player.runAction(cc.sequence(cc.moveBy(0.1,cc.p(0,-3)),cc.moveBy(0.1,cc.p(0,3))));
     },
 
-    move: function(nextX, nextY, left){
+    move: function(nextX, nextY, left, jump){
 
+        if (jump) {
+            var bezierX = 30;
+        } else {
+            var bezierX = 10;
+        }
 
-	    var bezierX = 10;
         if(this.group.player.getPosition().x > nextX){
               bezierX *= -1;
         }
@@ -47,42 +51,22 @@ cc.Class({
 
         var jumpAction = cc.sequence(cc.scaleTo(0.15, 0.9*flipValue, 1.3),cc.scaleTo(0.15, 1*flipValue, 1.0));
 
-
 	    var bezier = [cc.p(this.group.player.getPosition().x - bezierX, this.group.player.getPosition().y), cc.p(nextX,nextY), cc.p(nextX,nextY)];
-        var bezierTo = cc.bezierTo(0.15, bezier);
+        if (jump) {
+            var bezierTo = cc.bezierTo(0.3, bezier);
+        } else {
+            var bezierTo = cc.bezierTo(0.15, bezier);
+        }
+
 
         var spawn = cc.spawn(flip, jumpAction, bezierTo);
 
-
-        this.group.player.runAction(cc.sequence(spawn,cc.callFunc(this.group.moveFinished, this.group)));
-
-	},
-    
-    move: function(nextX, nextY, left){
-
-
-	    var bezierX = 10;
-        if(this.group.player.getPosition().x > nextX){
-              bezierX *= -1;
+        if(jump){
+            this.group.player.runAction(cc.sequence(spawn,cc.callFunc(this.group.jumpFinished, this.group)));
         }
-
-        var flip = cc.flipX(left);
-
-        var flipValue = 1;
-        if (!left){
-            flipValue *= -1;
+        else {
+            this.group.player.runAction(cc.sequence(spawn,cc.callFunc(this.group.moveFinished, this.group)));
         }
-
-        var jumpAction = cc.sequence(cc.scaleTo(0.15, 0.9*flipValue, 1.3),cc.scaleTo(0.15, 1*flipValue, 1.0));
-
-
-	    var bezier = [cc.p(this.group.player.getPosition().x - bezierX, this.group.player.getPosition().y), cc.p(nextX,nextY), cc.p(nextX,nextY)];
-        var bezierTo = cc.bezierTo(0.15, bezier);
-
-        var spawn = cc.spawn(flip, jumpAction, bezierTo);
-
-
-        this.group.player.runAction(cc.sequence(spawn,cc.callFunc(this.group.moveFinished, this.group)));
 
 	},
 

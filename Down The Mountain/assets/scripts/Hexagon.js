@@ -37,7 +37,7 @@ cc.Class({
             POISON: 'posion',
             SPIKE: 'zacken',
             MISSING: 'missing',
-            JUMP: 'jump',
+            JUMP: 'treejump',
         };
 
         this.playerStatus = 'neutral';
@@ -92,19 +92,8 @@ cc.Class({
     setOverlay:function(overlayType){
 
         if(overlayType==="none"){
-            //cc.log("Overlay Type: "+ overlayType);
             return;
         }
-
-
-        /*var self = this;
-
-        if(this.overlay === null){
-            // Create a new node and add sprite components.
-            self.overlay = new cc.Node("New Node");
-            self.node.addChild(self.overlay);
-
-        }*/
 
         var sprite = this.overlay.addComponent(cc.Sprite);
         sprite.spriteFrame = this.group.game.atlas.getSpriteFrame(overlayType);
@@ -143,8 +132,8 @@ cc.Class({
       return result;
 
     },
+    
     checkAction:function(){
-
 
         switch(this.groundType){
 
@@ -170,6 +159,14 @@ cc.Class({
                 break;
             case this.ground_tiles.SPIKE:
                 this.group.checkPlayerStatus(this.row, this.col, 'spike', this.spikeOut);
+                break;
+            break;
+            case this.ground_tiles.JUMP:
+                if (this.group.lastMove == 'left'){
+                    this.group.jumpMarker(this.col - 1, this.row + 2, true, true);
+                } else {
+                    this.group.jumpMarker(this.col + 1, this.row + 2, false, true);
+                }
                 break;
             break;
             case this.ground_tiles.MISSING:
