@@ -20,11 +20,9 @@ cc.Class({
         if(!cc.director.isPaused()){
             cc.director.pause();
             this.pausePanel.active = true;
-            cc.audioEngine.pauseMusic();
         }else{
             cc.director.resume();
             this.pausePanel.active = false;
-            cc.audioEngine.resumeMusic();
         }
 
     },

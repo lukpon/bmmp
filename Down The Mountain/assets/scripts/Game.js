@@ -26,11 +26,15 @@ cc.Class({
             default:null,
             type: cc.Node
         },
+        pausePanel: {
+            default:null,
+            type: cc.Node
+        },
     },
 
     // use this for initialization
     onLoad: function () {
-        
+            
 
         this.GameState = cc.Enum({
             Menu: -1,
@@ -48,7 +52,6 @@ cc.Class({
     },
 
     displayMenu:function(){
-        cc.audioEngine.stopMusic();
         this.gameState = this.GameState.Menu;
         this.hexagonGroup.getComponent('HexagonGroup').stop();
         cc.director.loadScene('_start');
@@ -59,6 +62,7 @@ cc.Class({
         this.sticky = false;
         this.flipped = false;
         this.gameOverMenu.active = false;
+        this.pausePanel.active = false;
         this.startGame();
     },
 
@@ -66,7 +70,6 @@ cc.Class({
         this.score += 1;
         // update the words of the scoreDisplay Label
         this.scoreDisplay.string = this.score.toString();
-        cc.audioEngine.playEffect(this.gainScore, false);
 
     },
     stick: function(duration){
@@ -85,8 +88,6 @@ cc.Class({
     },
 
     gameOver:function () {
-        cc.audioEngine.stopMusic();
-
         // Highscore via Local Storage
         var ls = cc.sys.localStorage;
         var value = this.score;

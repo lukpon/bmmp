@@ -30,9 +30,32 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+       // this.startMusic();
 
     },
 
+    // MUSIC ###############################
+    startMusic: function() {
+        cc.audioEngine.playMusic(this.startMusic, true);
+        cc.audioEngine.setMusicVolume(0.3);
+        this.musicWillPlay = true;
+    },
+
+    stopMusic: function(){
+        cc.audioEngine.stopMusic();
+        this.musicWillPlay = false;
+    },
+
+    toggleMusic: function() {
+        //prüfe, ob Music läuft oder nicht
+        if (this.musicWillPlay) {
+           cc.audioEngine.pauseMusic();
+       } else {
+            cc.audioEngine.resumeMusic();
+       }
+    },
+
+    //SOUNDS ###############################
     playSound_nextPrevPage: function() {
         cc.audioEngine.playEffect(this.nextPrevPageSound, false);
     },
@@ -48,5 +71,10 @@ cc.Class({
     playSound_Click: function() {
         cc.audioEngine.playEffect(this.clickSound, false);
     },
+
+    playSound_gainScore: function() {
+        cc.audioEngine.playEffect(this.gainScore, false);
+    },
+
 
 });
