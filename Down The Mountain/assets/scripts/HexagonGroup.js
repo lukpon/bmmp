@@ -66,8 +66,9 @@ cc.Class({
         this.hexGroup.x += this.hexagonWidth/2 + (480 - this.gridSizeX*this.hexagonWidth)/2 ;
         this.hexGroup.y -= this.hexagonHeight + 320 ;
 
-        this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
-        // this.generatePredefinedRows(this.gridSizeY*2, this.gridSizeX, 1);
+        // this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
+        this.generatePredefinedRows(this.gridSizeY, this.gridSizeX, 1);
+        this.generatePredefinedRows(this.gridSizeY, this.gridSizeX, 1);
 
         for(var i = 0; i < this.gridSizeY; i ++){
             this.addHexagonRow(i);
@@ -151,15 +152,57 @@ cc.Class({
 
         switch (style){
             case 1:
-                rows_ground = [[1,1,1,1,1],[10,10,10,10],[1,1,1,1,1],[10,10,10,10],[1,1,1,1,1],[10,10,10,10],[1,1,1,1,1],[10,10,10,10],[1,1,1,1,1],[10,10,10,10],[1,1,1,1,1],[10,10,10,10],];
-                rows_overlay = [[4,4,0,4,4],[0,0,0,0],[4,4,0,4,4],[0,0,0,0],[4,4,0,4,4],[0,0,0,0],[4,4,0,4,4],[0,0,0,0],[4,4,0,4,4],[0,0,0,0],[4,4,0,4,4],[0,0,0,0],];
+            rows_ground = [[1,1,11,1,44],[1,1,41,1],[44,1,1,1,1],[1,1,43,1],[44,32,1,1,44],[32,1,10,1],[31,1,41,10,1],[31,41,10,1],[1,31,41,10,7],[7,1,10,42],[1,1,1,1,44],[1,43,1,44]];
             break;
-
-            default:
-            true
         }
-        this.level_base = this.level_base.concat(rows_ground);
-        this.level_overlay = this.level_overlay.concat(rows_overlay);
+        var tempGroundArray = [];
+        for (var i=0; i < rows_ground.length; i++) {
+            var innerArray = [];
+            for (var j=0; j < rows_ground[i].length; j++) {
+                switch (rows_ground[i][j]) {
+                    case 41:
+                    innerArray.push(1);
+                    break;
+                    case 42:
+                    innerArray.push(1);
+                    break;
+                    case 43:
+                    innerArray.push(1);
+                    break;
+                    case 44:
+                    innerArray.push(1);
+                    break;
+                    default:
+                    innerArray.push(rows_ground[i][j]);
+                }
+            }
+            tempGroundArray.push(innerArray);
+        }
+        this.level_base = this.level_base.concat(tempGroundArray);
+        var tempOverlayArray = [];
+        for (var i=0; i < rows_ground.length; i++) {
+            var innerArray = [];
+            for (var j=0; j < rows_ground[i].length; j++) {
+                switch (rows_ground[i][j]) {
+                    case 41:
+                    innerArray.push(5);
+                    break;
+                    case 42:
+                    innerArray.push(12);
+                    break;
+                    case 43:
+                    innerArray.push(6);
+                    break;
+                    case 44:
+                    innerArray.push(4);
+                    break;
+                    default:
+                    innerArray.push(0);
+                }
+            }
+            tempOverlayArray.push(innerArray);
+        }
+        this.level_overlay = this.level_overlay.concat(tempOverlayArray);
     },
 
     generateRandomRows:function(rows, columns){
@@ -289,20 +332,20 @@ cc.Class({
                 } else if ((offsetY1+u)%2 == 0){   //(offsetY1+u)%2 == 0
                     if (r < 0.51) {
                         rows_ground[offsetY1+u][currentOffset] = 32;
-                        rows_overlay[offsetY1+u][currentOffset] = 99;
+                        rows_overlay[offsetY1+u][currentOffset] = 98;
                     } else {
                         rows_ground[offsetY1+u][currentOffset+1] = 31;
-                        rows_overlay[offsetY1+u][currentOffset+1] = 99;
+                        rows_overlay[offsetY1+u][currentOffset+1] = 98;
                         currentOffset += 1;
                     }
                 } else {
                     if(r < 0.51) {
                         rows_ground[offsetY1+u][currentOffset-1] = 32;
-                        rows_overlay[offsetY1+u][currentOffset-1] = 99;
+                        rows_overlay[offsetY1+u][currentOffset-1] = 98;
                         currentOffset -= 1;
                     } else {
                         rows_ground[offsetY1+u][currentOffset] = 31;
-                        rows_overlay[offsetY1+u][currentOffset] = 99;
+                        rows_overlay[offsetY1+u][currentOffset] = 98;
                     }
                 }
             }
@@ -371,6 +414,9 @@ cc.Class({
             break;
             case 12:
             result= "potion";
+            break;
+            case 99:
+            result= "missing";
             break;
             default:
             result = "none";
@@ -579,6 +625,9 @@ cc.Class({
             case 'antipoison':
             self.playerState = "neutral";
             self.player.getComponent("Player").player.spriteFrame = self.player.getComponent("Player").atlas.getSpriteFrame('player');
+            break;
+            case 'missing':
+            this.player.getComponent('Player').dropToDeath();
             break;
             case 'spike':
             if(this.playerRow == row && this.playerCol == col){

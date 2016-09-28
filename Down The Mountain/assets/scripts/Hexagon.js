@@ -36,6 +36,7 @@ cc.Class({
             LAVA: 'lava',
             POISON: 'posion',
             SPIKE: 'zacken',
+            MISSING: 'missing',
         };
 
         this.playerStatus = 'neutral';
@@ -168,6 +169,10 @@ cc.Class({
                 break;
             case this.ground_tiles.SPIKE:
                 this.group.checkPlayerStatus(this.row, this.col, 'spike', this.spikeOut);
+                break;
+            break;
+            case this.ground_tiles.MISSING:
+                this.group.checkPlayerStatus(this.row, this.col, 'missing');
                 break;
             break;
 
