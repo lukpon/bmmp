@@ -36,4 +36,7 @@
  <tile id="44">
   <image width="64" height="64" source="Tiles/isocube_tree.png"/>
  </tile>
+  <tile id="99">
+  <image width="64" height="64" source="Tiles/leer.png"/>
+ </tile>
 </tileset>
