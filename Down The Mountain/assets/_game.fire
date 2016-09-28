@@ -571,9 +571,7 @@
       "__id__": 12
     },
     "_enabled": true,
-    "_spriteFrame": {
-      "__uuid__": "e9b41b31-ce5c-45db-b4e2-eb2e4fa82d46"
-    },
+    "_spriteFrame": null,
     "_type": 0,
     "_sizeMode": 1,
     "_fillType": 0,
@@ -869,8 +867,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 121,
-      "height": 46
+      "width": 127,
+      "height": 54
     },
     "_children": [],
     "_rotationX": 0,
@@ -1056,7 +1054,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "00909c01-2108-4cfa-a50e-86fe4313c3cb"
+      "__uuid__": "455054ac-aec4-48a9-b32b-f38e0670862d"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -1098,10 +1096,10 @@
     },
     "duration": 0.1,
     "pressedSprite": {
-      "__uuid__": "9ea59f55-cc1e-4f9f-b2bf-a44d6d6f254e"
+      "__uuid__": "bf0eccd4-c925-4426-8b2d-6100ff85a904"
     },
     "hoverSprite": {
-      "__uuid__": "1399d155-dfbc-463e-ae01-77e9fb4f0327"
+      "__uuid__": "5ff73eae-d72a-4342-a336-e5f1faaf3a7a"
     },
     "clickEvents": [
       {
@@ -1124,7 +1122,7 @@
       "a": 255
     },
     "_N$normalSprite": {
-      "__uuid__": "00909c01-2108-4cfa-a50e-86fe4313c3cb"
+      "__uuid__": "455054ac-aec4-48a9-b32b-f38e0670862d"
     },
     "_N$disabledSprite": null,
     "_N$target": {
@@ -1480,7 +1478,7 @@
     "_tag": -1,
     "_opacityModifyRGB": false,
     "_id": "5bf78hjliBB7ap6TGtkyIF+",
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 52
@@ -2034,7 +2032,7 @@
       "__id__": 17
     },
     "atlas": {
-      "__uuid__": "7afb25bc-846d-41cf-83ff-eefbf985aaf0"
+      "__uuid__": "a65edce9-f76f-4833-a23b-d9e98bca37cd"
     },
     "gameplayWindow": {
       "__id__": 3

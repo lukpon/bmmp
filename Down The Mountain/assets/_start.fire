@@ -644,7 +644,7 @@
       "__id__": 12
     },
     "component": "ButtonControl",
-    "handler": "buttonControlCallback"
+    "handler": "choosePlayerCallback"
   },
   {
     "__type__": "cc.ClickEvent",

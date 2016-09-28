@@ -15,6 +15,11 @@ cc.Class({
     buttonControlCallback: function(){
         cc.director.loadScene('_game');
     },
+
+    choosePlayerCallback: function(){
+        cc.director.loadScene('_choose');
+    },
+
     pauseButtonControlCallback: function(){
 
         if(!cc.director.isPaused()){
