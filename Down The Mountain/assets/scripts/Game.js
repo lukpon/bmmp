@@ -30,6 +30,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        
 
         this.GameState = cc.Enum({
             Menu: -1,
@@ -47,6 +48,7 @@ cc.Class({
     },
 
     displayMenu:function(){
+        cc.audioEngine.stopMusic();
         this.gameState = this.GameState.Menu;
         this.hexagonGroup.getComponent('HexagonGroup').stop();
         cc.director.loadScene('_start');
@@ -64,7 +66,7 @@ cc.Class({
         this.score += 1;
         // update the words of the scoreDisplay Label
         this.scoreDisplay.string = this.score.toString();
-        //dcc.audioEngine.playEffect(this.scoreAudio, false);
+        cc.audioEngine.playEffect(this.gainScore, false);
 
     },
     stick: function(duration){
@@ -83,6 +85,7 @@ cc.Class({
     },
 
     gameOver:function () {
+        cc.audioEngine.stopMusic();
 
         // Highscore via Local Storage
         var ls = cc.sys.localStorage;

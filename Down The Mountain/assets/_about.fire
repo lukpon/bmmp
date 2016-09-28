@@ -40,7 +40,7 @@
     "_globalZOrder": 0,
     "_tag": -1,
     "_opacityModifyRGB": false,
-    "_id": "a958ce50-d4d4-4226-98a2-44e6c5c9e15c",
+    "_id": "4665098f-62fe-44df-b978-d9c7d89a06a8",
     "autoReleaseAssets": false
   },
   {
@@ -96,10 +96,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 23
+        "__id__": 24
       },
       {
-        "__id__": 24
+        "__id__": 25
+      },
+      {
+        "__id__": 26
       }
     ],
     "_prefab": null,
@@ -434,7 +437,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "73e65d30-6364-47a2-b911-b55e2a818213"
+      "__uuid__": "267b8e13-ab70-4939-9376-a2c19aea7fe0"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -512,7 +515,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "ee108678-5ca9-4d25-ae15-0f5f22e4a46d"
+      "__uuid__": "b8c859e7-71e3-4248-a771-b2e460e4224a"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -538,7 +541,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "6f6626bf-58c1-4315-87dc-685dc40c2fb5"
+      "__uuid__": "5ca3f0c5-187c-4789-9f10-7dfd76fadb08"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -839,6 +842,9 @@
     "clickEvents": [
       {
         "__id__": 22
+      },
+      {
+        "__id__": 23
       }
     ],
     "_N$interactable": true,
@@ -875,6 +881,14 @@
     "handler": "menuButtonControlCallback"
   },
   {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 2
+    },
+    "component": "Sound",
+    "handler": "playSound_return"
+  },
+  {
     "__type__": "cc.Canvas",
     "_name": "",
     "_objFlags": 0,
@@ -891,7 +905,7 @@
     "_fitHeight": true
   },
   {
-    "__type__": "38be0yYHNxPQL9US4danyng",
+    "__type__": "f6589K63UFAxqy8Z6fnlwHC",
     "_name": "",
     "_objFlags": 0,
     "node": {
@@ -901,10 +915,33 @@
     "aboutPanel": {
       "__id__": 3
     },
-    "closeButton": null,
+    "closeButton": {
+      "__id__": 15
+    },
     "labelAbout": null,
     "creditsContainer": {
       "__id__": 4
+    }
+  },
+  {
+    "__type__": "5e343IMLdJDLpisjjdX2Fnm",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true,
+    "clickSound": {
+      "__uuid__": "0e265ba9-c6ae-4a8d-b12d-17dfc64ef060"
+    },
+    "returnSound": {
+      "__uuid__": "2923327b-ad6f-408d-beb2-7e7cbce9a139"
+    },
+    "startMusic": {
+      "__uuid__": "18a9cf60-b4a9-4be9-bf83-a2dcffe933b4"
+    },
+    "gameMusic": {
+      "__uuid__": "5b36ff33-e3c0-470e-bfde-6268d898dc4a"
     }
   }
 ]

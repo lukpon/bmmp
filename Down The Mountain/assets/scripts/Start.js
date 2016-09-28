@@ -14,6 +14,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+
         var ls = cc.sys.localStorage;
         var key  = "highscore";
 
