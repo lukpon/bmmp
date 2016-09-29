@@ -898,7 +898,7 @@
       "__uuid__": "19b1639b-bd25-4e4e-8db1-4aeec8723501"
     },
     "atlas": {
-      "__uuid__": "837796e0-d3ed-4dad-8993-eb9e2b45b62f"
+      "__uuid__": "960afc88-5599-4887-bbc9-6807c5439e25"
     }
   },
   {
@@ -1068,12 +1068,12 @@
     "__type__": "cc.Node",
     "_name": "Pause_Overlay",
     "_objFlags": 0,
-    "_opacity": 181,
+    "_opacity": 159.885,
     "_color": {
       "__type__": "cc.Color",
-      "r": 117,
-      "g": 179,
-      "b": 162,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_cascadeOpacityEnabled": true,
@@ -1083,12 +1083,12 @@
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
-      "y": 0.5
+      "y": -1
     },
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 480,
-      "height": 640
+      "height": 2284
     },
     "_children": [],
     "_rotationX": 0,
@@ -1125,7 +1125,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "d1e727dc-240b-49bf-9cea-e6b0bdf6e9ec"
+      "__uuid__": "07415c33-9397-48b8-be0b-5e52d228b160"
     },
     "_type": 0,
     "_sizeMode": 0,

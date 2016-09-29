@@ -13,7 +13,6 @@ cc.Class({
         sound:{
             default: null,
             type:cc.Node,
-        
         },
     },
 
@@ -32,6 +31,28 @@ cc.Class({
         }
         this.characterContainerPanel[0].active = true;
 
+    },
+
+    playerChosen:function() {
+        var ls = cc.sys.localStorage;
+        var key  = "player";
+
+        switch(this.characterCurrentPage) {
+            case 1: 
+                ls.setItem(key, 1);
+            break;
+            case 2: 
+                ls.setItem(key, 2);
+            break;
+            case 3:
+                ls.setItem(key, 3);
+            break;
+            case 4:
+                ls.setItem(key, 4);
+            break;
+        }
+
+        cc.director.loadScene('_game');
     },
 
     nextPlayer:function(){

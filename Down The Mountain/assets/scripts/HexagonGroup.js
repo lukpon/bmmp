@@ -96,6 +96,11 @@ cc.Class({
         //background
         this.game.background.setPosition(0,1190);
 
+        //player
+        var ls = cc.sys.localStorage;
+        var chosenPlayer = ls.getItem('player');
+        this.player.getComponent("Player").player.spriteFrame = this.player.getComponent("Player").atlas.getSpriteFrame('player_' + chosenPlayer);
+
     },
 
     startGame:function(){
@@ -783,7 +788,11 @@ cc.Class({
             break;
             case 'poison':
             self.playerState = "poisoned";
-            self.player.getComponent("Player").player.spriteFrame = self.player.getComponent("Player").atlas.getSpriteFrame('player_poisoned');
+            
+            var ls = cc.sys.localStorage;
+            var chosenPlayer = ls.getItem('player');
+            self.player.getComponent("Player").player.spriteFrame = self.player.getComponent("Player").atlas.getSpriteFrame('player_' + chosenPlayer + '_poisoned');
+
             setTimeout(function (){
                 if(self.playerState == "poisoned") {
                     self.game.gameOver();
@@ -792,7 +801,9 @@ cc.Class({
             break;
             case 'antipoison':
             self.playerState = "neutral";
-            self.player.getComponent("Player").player.spriteFrame = self.player.getComponent("Player").atlas.getSpriteFrame('player');
+            var ls = cc.sys.localStorage;
+            var chosenPlayer = ls.getItem('player');
+            self.player.getComponent("Player").player.spriteFrame = self.player.getComponent("Player").atlas.getSpriteFrame('player_' + chosenPlayer);
             break;
             case 'missing':
             this.player.getComponent('Player').dropToDeath();

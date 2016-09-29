@@ -95,7 +95,7 @@
         "__id__": 54
       },
       {
-        "__id__": 61
+        "__id__": 62
       }
     ],
     "_rotationX": 0,
@@ -117,10 +117,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 68
+        "__id__": 69
       },
       {
-        "__id__": 69
+        "__id__": 70
       }
     ],
     "_prefab": null,
@@ -1668,8 +1668,7 @@
     "node": {
       "__id__": 41
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -1892,8 +1891,7 @@
     "node": {
       "__id__": 48
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -2116,8 +2114,7 @@
     "node": {
       "__id__": 55
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -2181,6 +2178,9 @@
       },
       {
         "__id__": 60
+      },
+      {
+        "__id__": 61
       }
     ],
     "_N$interactable": true,
@@ -2223,6 +2223,14 @@
     "handler": "playSound_Click"
   },
   {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 2
+    },
+    "component": "Choose",
+    "handler": "playerChosen"
+  },
+  {
     "__type__": "cc.Node",
     "_name": "Button Close",
     "_objFlags": 0,
@@ -2250,7 +2258,7 @@
     },
     "_children": [
       {
-        "__id__": 62
+        "__id__": 63
       }
     ],
     "_rotationX": 0,
@@ -2272,10 +2280,10 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 64
+        "__id__": 65
       },
       {
-        "__id__": 65
+        "__id__": 66
       }
     ],
     "_prefab": null,
@@ -2295,7 +2303,7 @@
     },
     "_cascadeOpacityEnabled": true,
     "_parent": {
-      "__id__": 61
+      "__id__": 62
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2327,7 +2335,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 63
+        "__id__": 64
       }
     ],
     "_prefab": null,
@@ -2338,17 +2346,16 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 62
+      "__id__": 63
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 61
+      "__id__": 62
     },
     "_enabled": true,
     "_spriteFrame": {
@@ -2374,7 +2381,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 61
+      "__id__": 62
     },
     "_enabled": true,
     "transition": 2,
@@ -2401,10 +2408,10 @@
     },
     "clickEvents": [
       {
-        "__id__": 66
+        "__id__": 67
       },
       {
-        "__id__": 67
+        "__id__": 68
       }
     ],
     "_N$interactable": true,
@@ -2427,13 +2434,13 @@
     },
     "_N$disabledSprite": null,
     "_N$target": {
-      "__id__": 61
+      "__id__": 62
     }
   },
   {
     "__type__": "cc.ClickEvent",
     "target": {
-      "__id__": 62
+      "__id__": 63
     },
     "component": "ButtonControl",
     "handler": "menuButtonControlCallback"

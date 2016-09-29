@@ -19,7 +19,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>player_2.png</key>
+            <key>player_1_poisoned.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -34,7 +34,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>player_3.png</key>
+            <key>player_2.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -49,7 +49,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>player_4.png</key>
+            <key>player_2_poisoned.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -61,6 +61,66 @@
                 <string>{64,64}</string>
                 <key>textureRect</key>
                 <string>{{192,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>player_3.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{256,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>player_3_poisoned.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{320,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>player_4.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{384,0},{64,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>player_4_poisoned.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{64,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{64,64}</string>
+                <key>textureRect</key>
+                <string>{{448,0},{64,64}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -76,9 +136,9 @@
             <key>realTextureFileName</key>
             <string>players.png</string>
             <key>size</key>
-            <string>{256,64}</string>
+            <string>{512,64}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:3492fc5562cb22b37d5b0eed6ffe1a7a:2fc18ee0b7d4746db84fb761e332dabc:a538067eba60a937de15ee9eba6563d6$</string>
+            <string>$TexturePacker:SmartUpdate:0134388c87ec206a093657b8aa7ee1be:9091ed7d35bc009ce46d0f0310d80cf2:a538067eba60a937de15ee9eba6563d6$</string>
             <key>textureFileName</key>
             <string>players.png</string>
         </dict>
