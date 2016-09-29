@@ -78,8 +78,8 @@ cc.Class({
         var sprite = this.getComponent(cc.Sprite);
 
         if(frame === "zacken"){
-            this.animation.play("zacken");
-            sprite.spriteFrame = this.group.game.atlas.getSpriteFrame("cube2");
+            this.animation.play("zacken2");
+            // sprite.spriteFrame = this.group.game.atlas.getSpriteFrame("trap");
         }else{
             this.animation.stop();
             sprite.spriteFrame = this.group.game.atlas.getSpriteFrame(frame);
@@ -132,7 +132,7 @@ cc.Class({
       return result;
 
     },
-    
+
     checkAction:function(){
 
         switch(this.groundType){

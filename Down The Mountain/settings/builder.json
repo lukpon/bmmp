@@ -1,0 +1,17 @@
+{
+  "excludeScenes": [],
+  "includeAnysdk": false,
+  "includeSdk": [
+    "anysdk"
+  ],
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.Down The Mountain",
+  "startScene": "9d84cda2-7bd5-4408-a023-ddad7afe6d34",
+  "title": "Wonky Woods",
+  "webOrientation": "auto"
+}

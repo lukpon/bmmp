@@ -2,7 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        
+
     },
 
     // use this for initialization
@@ -12,6 +12,7 @@ cc.Class({
     spikeEventHandler:function(){
 
         var hexagon = this.getComponent(cc.Animation).parent;
+        console.log(hexagon);
         hexagon.spikeOut = !hexagon.spikeOut;
         hexagon.checkAction();
 
