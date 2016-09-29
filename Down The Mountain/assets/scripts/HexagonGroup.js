@@ -70,7 +70,7 @@ cc.Class({
         this.hexGroup.y -= this.hexagonHeight + 320 ;
 
         // this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
-        this.generatePredefinedRows(this.gridSizeY, this.gridSizeX, 1);
+        this.generatePredefinedRows(this.gridSizeY, this.gridSizeX, 2);
         this.generatePredefinedRows(this.gridSizeY, this.gridSizeX, 1);
 
         for(var i = 0; i < this.gridSizeY; i ++){
@@ -157,6 +157,9 @@ cc.Class({
             case 1:
             rows_ground = [[1,1,11,1,44],[1,13,13,1],[44,1,1,13,1],[1,1,43,1],[44,32,13,1,44],[32,1,10,1],[31,1,41,10,1],[31,41,10,1],[1,31,41,10,7],[7,1,10,42],[1,1,1,1,44],[1,43,1,44]];
             break;
+            case 2:
+			rows_ground = [[44,1,1,1,44],[99,99,8,99],[99,99,11,99,99],[99,8,41,99],[99,8,99,7,99],[8,41,99,41],[41,99,13,99,7],[41,8,99,8],[99,41,99,41,99],[99,99,8,99],[99,1,42,1,99],[44,1,1,44]];
+			break;
         }
         var tempGroundArray = [];
         for (var i=0; i < rows_ground.length; i++) {
@@ -785,6 +788,8 @@ cc.Class({
                     }
 
                     if(this.gridSizeY > 9 && (this.gridSizeY % 18) == 17){
+                        // this.generatePredefinedRows(this.gridSizeY, this.gridSizeX, this.getRandomArbitrary(1,50));
+                        // this.generatePredefinedRows(this.gridSizeY, this.gridSizeX, this.getRandomArbitrary(1,50));
                         this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
                     }
 
