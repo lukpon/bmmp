@@ -695,8 +695,7 @@
     "node": {
       "__id__": 16
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
