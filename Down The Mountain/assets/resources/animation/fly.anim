@@ -1,6 +1,6 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "birdani_reverse",
+  "_name": "fly",
   "_objFlags": 0,
   "_rawFiles": null,
   "_duration": 0.31666666666666665,
@@ -14,26 +14,29 @@
           {
             "frame": 0,
             "value": {
-              "__uuid__": "6d69084b-f8f5-4ee6-94c9-4efbf3e631dc"
+              "__uuid__": "66beeeb4-0cca-4e13-b2f8-4fbe44e8c8a1"
             }
           },
           {
-            "frame": 0.15,
+            "frame": 0.1,
             "value": {
-              "__uuid__": "5c308386-6cf9-4564-a14a-2df42bdcf1cc"
+              "__uuid__": "78fc2acd-9479-4fcd-a5e4-2318f4d5a6d4"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "312bfea7-1d75-44e8-a7fc-7f378237c571"
             }
           },
           {
             "frame": 0.3,
             "value": {
-              "__uuid__": "5c308386-6cf9-4564-a14a-2df42bdcf1cc"
+              "__uuid__": "312bfea7-1d75-44e8-a7fc-7f378237c571"
             }
           }
         ]
       }
-    },
-    "props": {
-      "scaleX": []
     }
   },
   "events": []

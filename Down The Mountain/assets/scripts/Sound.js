@@ -31,7 +31,7 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        cc.audioEngine.playMusic(this.startMusic, true);
+        //cc.audioEngine.playMusic(this.startMusic, true);
         cc.audioEngine.setMusicVolume(0.3);
         this.musicWillPlay = true;
     },
