@@ -33,7 +33,14 @@ cc.Class({
         sound:{
             default: null,
             type:cc.Node,
-        
+        },
+        playPauseButton: {
+            default:null,
+            type: cc.Node
+        },
+        atlasPlayPause: {
+            default:null,
+            type:cc.SpriteAtlas
         },
     },
 
@@ -49,17 +56,12 @@ cc.Class({
 
         this.gameState = this.GameState.Ready;
         this.hexagonGroup.getComponent('HexagonGroup').game = this;
+
         this.reset();
     },
 
     startGame:function(){
         this.gameState = this.GameState.Run;
-    },
-
-    displayMenu:function(){
-        this.gameState = this.GameState.Menu;
-        this.hexagonGroup.getComponent('HexagonGroup').stop();
-        cc.director.loadScene('_start');
     },
 
     reset:function(){
@@ -69,6 +71,34 @@ cc.Class({
         this.gameOverMenu.active = false;
         this.pausePanel.active = false;
         this.startGame();
+    },
+
+    displayMenu:function(){
+        this.gameState = this.GameState.Menu;
+        this.hexagonGroup.getComponent('HexagonGroup').stop();
+        cc.director.loadScene('_start');
+    },
+
+    togglePause: function(){
+        if(!cc.director.isPaused()){
+            cc.director.pause();
+
+            // ersetze Sprite durch Pause-Frame
+            this.playPauseButton.getComponent(cc.Button).normalSprite = this.atlasPlayPause.getSpriteFrame('btn_pauseplay_normal');
+            this.playPauseButton.getComponent(cc.Button).pressedSprite = this.atlasPlayPause.getSpriteFrame('btn_pauseplay_hover');
+            this.playPauseButton.getComponent(cc.Button).hoverSprite = this.atlasPlayPause.getSpriteFrame('btn_pauseplay_hover');
+            
+            this.pausePanel.active = true;
+        }else{
+            cc.director.resume();
+
+            // ersetze Sprite durch Play-Frame
+            this.playPauseButton.getComponent(cc.Button).normalSprite = this.atlasPlayPause.getSpriteFrame('btn_pause_normal');
+            this.playPauseButton.getComponent(cc.Button).pressedSprite = this.atlasPlayPause.getSpriteFrame('btn_pause_hover');
+            this.playPauseButton.getComponent(cc.Button).hoverSprite = this.atlasPlayPause.getSpriteFrame('btn_pause_hover');
+
+            this.pausePanel.active = false;
+        }
     },
 
     gainScore: function () {

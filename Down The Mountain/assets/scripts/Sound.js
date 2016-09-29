@@ -25,8 +25,7 @@ cc.Class({
         nextPrevPageSound: {
             default:null,
             url: cc.AudioClip
-        },
-        
+        },   
     },
 
     // use this for initialization

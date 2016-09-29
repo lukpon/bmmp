@@ -618,8 +618,7 @@
     "node": {
       "__id__": 14
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -842,8 +841,7 @@
     "node": {
       "__id__": 21
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -1068,8 +1066,7 @@
     "node": {
       "__id__": 28
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -1292,8 +1289,7 @@
     "node": {
       "__id__": 35
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",

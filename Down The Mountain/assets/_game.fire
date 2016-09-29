@@ -1338,10 +1338,7 @@
     "node": {
       "__id__": 32
     },
-    "_enabled": true,
-    "pausePanel": {
-      "__id__": 26
-    }
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -1615,10 +1612,7 @@
     "node": {
       "__id__": 41
     },
-    "_enabled": true,
-    "pausePanel": {
-      "__id__": 26
-    }
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -1710,10 +1704,10 @@
   {
     "__type__": "cc.ClickEvent",
     "target": {
-      "__id__": 41
+      "__id__": 2
     },
-    "component": "ButtonControl",
-    "handler": "pauseButtonControlCallback"
+    "component": "Game",
+    "handler": "togglePause"
   },
   {
     "__type__": "cc.ClickEvent",
@@ -2057,8 +2051,7 @@
     "node": {
       "__id__": 53
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -2278,6 +2271,12 @@
     },
     "sound": {
       "__id__": 3
+    },
+    "playPauseButton": {
+      "__id__": 40
+    },
+    "atlasPlayPause": {
+      "__uuid__": "33c185ed-a87a-4d50-bf0d-cfb37f667f4c"
     }
   }
 ]
