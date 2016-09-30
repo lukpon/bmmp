@@ -371,7 +371,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 695.56,
-      "height": 1444.44
+      "height": 1777.78
     },
     "_children": [],
     "_rotationX": 0,
@@ -416,7 +416,7 @@
       "__uuid__": "a222989f-b226-415d-ac05-b79e1bd6c47b"
     },
     "_isSystemFontUsed": false,
-    "_N$string": "BLOCKPRAKTIKUM\nMultimedia-Programmierung\nSommersemester 2016\n\nGraphics, Animation,\nGame Design:\nOLENA GONCHARENKO\nANNIKA MITTELMEIER\n\nLevel Design:\nOLENA GONCHARENKO\n\nGame Coder, Menus:\nLUKAS PONIKOWSKI\nLUCA SPEETER\n\nMusic:\nTHINGAMAJIG - AUDIONAUTIX.COM\n\nDozent:\nPROF. HEINRICH HUSSMANN\n\nUebungsleitung:\nHENRI PALLEIS\n\nMade with Cocos Creator <3",
+    "_N$string": "BLOCKPRAKTIKUM\nMultimedia-Programmierung\nSommersemester 2016\n\nGraphics, Game Design, Animation:\nANNIKA MITTELMEIER\nOLENA GONCHARENKO\n\nLevel Design:\nOLENA GONCHARENKO\n\nInterface Design:\nLUKAS PONIKOWSKI\n\nGame Coder:\nLUCA SPEETER\n\nDocumentation:\nANNIKA MITTELMEIER\n\nSound, Music:\nTHINGAMAJIG - AUDIONAUTIX.COM\nFLASHKIT.COM\nFREESOUND.ORG\n\nDozent:\nPROF. HEINRICH HUSSMANN\n\nUebungsleitung:\nHENRI PALLEIS\n\nMade with Cocos Creator v1.2.1 rc1 <3",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 2,
     "_N$overflow": 0

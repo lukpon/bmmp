@@ -29,7 +29,7 @@ cc.Class({
 
         var self = this;
         var position = this.creditsContainer.getPosition();        
-        this.creditsContainer.runAction(cc.sequence(cc.moveBy(20,cc.p(0,1444)),cc.moveTo(0,position))).repeatForever(); 
+        this.creditsContainer.runAction(cc.sequence(cc.moveBy(20,cc.p(0,1777)),cc.moveTo(0,position))).repeatForever(); 
   
     },
 
