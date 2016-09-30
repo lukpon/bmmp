@@ -1,0 +1,1 @@
+[{"__type__":"cc.SpriteFrame","content":{"name":"btn_close_normal","texture":"a73fa409-7b11-471c-94ed-0d5dd80c6280","rect":[1,2,49,49],"offset":[0,-1],"originalSize":[51,51]}},{"__type__":"cc.SpriteFrame","content":{"name":"btn_close_hover","texture":"adeb32df-284f-41bf-8a34-89c35aa51646","rect":[1,2,49,49],"offset":[0,-1],"originalSize":[51,51]}}]

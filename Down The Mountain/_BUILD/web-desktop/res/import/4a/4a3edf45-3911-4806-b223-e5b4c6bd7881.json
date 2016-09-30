@@ -1,0 +1,1 @@
+{"__type__":"cc.AnimationClip","_name":"zacken","_duration":0.25,"speed":0.1,"wrapMode":2,"curveData":{"comps":{"cc.Sprite":{"spriteFrame":[{"frame":0,"value":null},{"frame":0.11666666666666667,"value":null},{"frame":0.23333333333333334,"value":null}]}}},"events":[{"frame":0.08333333333333333,"func":"spikeEventHandler","params":[]}]}

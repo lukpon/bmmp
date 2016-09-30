@@ -1,0 +1,1 @@
+[{"__type__":"cc.Prefab","_name":"zacken2","data":{"__id__":1}},{"__type__":"cc.Node","_name":"zacken2","_position":{"__type__":"cc.Vec2","x":240,"y":320},"_components":[{"__type__":"cc.Animation","node":{"__id__":1},"_clips":[null]},{"__type__":"cc.Sprite","node":{"__id__":1}}]}]
