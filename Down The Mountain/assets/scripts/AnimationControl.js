@@ -10,12 +10,9 @@ cc.Class({
 
     },
     spikeEventHandler:function(){
-
         var hexagon = this.getComponent(cc.Animation).parent;
-        console.log(hexagon);
         hexagon.spikeOut = !hexagon.spikeOut;
         hexagon.checkAction();
-
     },
 
     // called every frame, uncomment this function to activate update callback

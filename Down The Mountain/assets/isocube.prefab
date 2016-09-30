@@ -224,7 +224,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "9da3cYx1w9NH6h3fyStPnL3"
+    "fileId": "c512do1Lq9Jiq+GStPwhKaN"
   },
   {
     "__type__": "cc.Node",
@@ -341,7 +341,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "b2d88bk33xBxZ3GNiV+vpKO"
+    "fileId": "038eflU1wxCoJ9T+pgZJ/ZL"
   },
   {
     "__type__": "cc.Node",
@@ -399,7 +399,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "97e6afnSHFD3oCW5oTDjcMR"
+    "fileId": "7b499Irh0FOQrnlcYBEy09L"
   },
   {
     "__type__": "cc.Sprite",
@@ -451,6 +451,6 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "9f0dbb6ejNGeKK/Q4XWV1p8"
+    "fileId": "89204zSv39IBobCZCdClQWD"
   }
 ]
