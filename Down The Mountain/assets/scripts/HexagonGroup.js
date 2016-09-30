@@ -70,7 +70,7 @@ cc.Class({
         this.hexGroup.y -= this.hexagonHeight + 320 ;
 
         // this.generateRandomRows(this.gridSizeY*2, this.gridSizeX);
-        this.generatePredefinedRows(this.gridSizeY, this.gridSizeX, 2);
+        this.generatePredefinedRows(this.gridSizeY, this.gridSizeX, 1);
         this.generatePredefinedRows(this.gridSizeY, this.gridSizeX, this.getRandomArbitrary(2,72));
 
         for(var i = 0; i < this.gridSizeY; i ++){
@@ -102,7 +102,7 @@ cc.Class({
         this.player.getComponent("Player").player.spriteFrame = this.player.getComponent("Player").atlas.getSpriteFrame('player_' + chosenPlayer);
 
         //music
-        cc.sys.localStorage.setItem('bg_music', true);
+        cc.sys.localStorage.setItem('bg_music', 'notplaying');
 
     },
 

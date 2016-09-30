@@ -1218,7 +1218,7 @@
     "_tag": -1,
     "_opacityModifyRGB": false,
     "_id": "e02ffBcU/9JYqgaCZaLpagX",
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 37
@@ -1447,7 +1447,7 @@
       "width": 480,
       "height": 640
     },
-    "_fitWidth": false,
+    "_fitWidth": true,
     "_fitHeight": true
   },
   {

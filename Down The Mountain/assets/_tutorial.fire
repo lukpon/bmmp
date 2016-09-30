@@ -2867,8 +2867,7 @@
     "node": {
       "__id__": 72
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -3091,8 +3090,7 @@
     "node": {
       "__id__": 79
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -3440,8 +3438,7 @@
     "node": {
       "__id__": 90
     },
-    "_enabled": true,
-    "pausePanel": null
+    "_enabled": true
   },
   {
     "__type__": "cc.Sprite",
@@ -3559,7 +3556,7 @@
       "width": 480,
       "height": 640
     },
-    "_fitWidth": false,
+    "_fitWidth": true,
     "_fitHeight": true
   },
   {

@@ -30,29 +30,25 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        if (cc.sys.localStorage.getItem('bg_music') == true) {
+        if (cc.sys.localStorage.getItem('bg_music') == 'notplaying') {
             this.playMusic();
-            console.log(cc.sys.localStorage.getItem('bg_music'));
         }
     },
 
     // MUSIC ###############################
     playMusic: function() {
         cc.audioEngine.playMusic(this.startMusic, true);
-        this.musicWillPlay = true;
         cc.audioEngine.setMusicVolume(0.3);
-        cc.sys.localStorage.setItem('bg_music', false);
+        cc.sys.localStorage.setItem('bg_music', 'playing');
     },
 
     toggleMusic: function() {
         //prüfe, ob Music läuft oder nicht
-        if (this.musicWillPlay) {
+        if (cc.sys.localStorage.getItem('bg_music') == 'notplaying') {
             this.startScene.toggleSoundButton(false);
-            this.musicWillPlay = false;
            cc.audioEngine.pauseMusic();
-       } else {
+       } else if (cc.sys.localStorage.getItem('bg_music') == 'playing') {
             this.startScene.toggleSoundButton(true);
-            this.musicWillPlay = true;
             cc.audioEngine.resumeMusic();
        }
     },
