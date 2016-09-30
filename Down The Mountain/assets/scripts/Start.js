@@ -34,9 +34,13 @@ cc.Class({
         var key  = "highscore";
         var key2  = "bg_music";
 
-        var existingHighscore = ls.getItem(key);
-        this.highscoreLabel.string = 'Highscore: ' + existingHighscore.toString();
-
+        try {
+            var existingHighscore = ls.getItem(key);
+            this.highscoreLabel.string = 'Highscore: ' + existingHighscore.toString();
+        } catch(e){
+            this.highscoreLabel.string = 'Highscore: 0';
+        }
+        
         this.sound.getComponent('Sound').startScene = this;
 
     },
