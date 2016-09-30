@@ -101,6 +101,9 @@ cc.Class({
         var chosenPlayer = ls.getItem('player');
         this.player.getComponent("Player").player.spriteFrame = this.player.getComponent("Player").atlas.getSpriteFrame('player_' + chosenPlayer);
 
+        //music
+        cc.sys.localStorage.setItem('bg_music', true);
+
     },
 
     startGame:function(){

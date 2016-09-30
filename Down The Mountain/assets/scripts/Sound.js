@@ -30,14 +30,18 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        //cc.audioEngine.playMusic(this.startMusic, true);
-        cc.audioEngine.setMusicVolume(0.3);
-        this.musicWillPlay = true;
+        if (cc.sys.localStorage.getItem('bg_music') == true) {
+            this.playMusic();
+            console.log(cc.sys.localStorage.getItem('bg_music'));
+        }
     },
 
     // MUSIC ###############################
-    startMusic: function() {
-        
+    playMusic: function() {
+        cc.audioEngine.playMusic(this.startMusic, true);
+        this.musicWillPlay = true;
+        cc.audioEngine.setMusicVolume(0.3);
+        cc.sys.localStorage.setItem('bg_music', false);
     },
 
     toggleMusic: function() {

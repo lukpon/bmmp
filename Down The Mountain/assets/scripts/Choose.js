@@ -52,7 +52,6 @@ cc.Class({
             break;
         }
 
-        cc.director.loadScene('_game');
     },
 
     nextPlayer:function(){

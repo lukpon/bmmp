@@ -32,6 +32,9 @@ cc.Class({
 
         var ls = cc.sys.localStorage;
         var key  = "highscore";
+        var key2  = "bg_music";
+
+        var music_play = ls.setItem(key2, true);
 
         var existingHighscore = ls.getItem(key);
         this.highscoreLabel.string = 'Highscore: ' + existingHighscore.toString();

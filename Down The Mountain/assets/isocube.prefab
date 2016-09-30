@@ -224,7 +224,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "c512do1Lq9Jiq+GStPwhKaN"
+    "fileId": "ed7d3rG+a1BVLzuicdCbshW"
   },
   {
     "__type__": "cc.Node",
@@ -297,7 +297,7 @@
     "_defaultClip": null,
     "_clips": [
       {
-        "__uuid__": "ad78d260-9b4c-4a75-8f74-c836de6e7c76"
+        "__uuid__": "9a636cd9-7587-4cf7-8292-66fa274dd581"
       }
     ],
     "playOnLoad": false
@@ -341,7 +341,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "038eflU1wxCoJ9T+pgZJ/ZL"
+    "fileId": "88fe7nlqmtPvovWP7nkZoh3"
   },
   {
     "__type__": "cc.Node",
@@ -399,7 +399,7 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "7b499Irh0FOQrnlcYBEy09L"
+    "fileId": "06c04K1BS1HUJRYsJT2qTmv"
   },
   {
     "__type__": "cc.Sprite",
@@ -451,6 +451,6 @@
       "__id__": 1
     },
     "asset": null,
-    "fileId": "89204zSv39IBobCZCdClQWD"
+    "fileId": "f8815CsPDRNKLpGSC2nAa5l"
   }
 ]
